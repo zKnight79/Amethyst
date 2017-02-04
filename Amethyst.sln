@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amethyst", "Amethyst\Amethyst.csproj", "{B549C0BE-D3F4-4296-9AEC-B14DAED96C24}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amethyst_UnitTest", "Amethyst_UnitTest\Amethyst_UnitTest.csproj", "{DA8658FF-099D-4623-807B-B0FD0B99F851}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B549C0BE-D3F4-4296-9AEC-B14DAED96C24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B549C0BE-D3F4-4296-9AEC-B14DAED96C24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B549C0BE-D3F4-4296-9AEC-B14DAED96C24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA8658FF-099D-4623-807B-B0FD0B99F851}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA8658FF-099D-4623-807B-B0FD0B99F851}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA8658FF-099D-4623-807B-B0FD0B99F851}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA8658FF-099D-4623-807B-B0FD0B99F851}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

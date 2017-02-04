@@ -160,8 +160,8 @@ namespace Amethyst
             {
                 T[,] newT = new T[newDim1Size, newDim2Size];
 
-                int end1 = System.Math.Min(newDim1Size, original.GetLength(0) - pos1);
-                int end2 = System.Math.Min(newDim2Size, original.GetLength(1) - pos2);
+                int end1 = System.Math.Min(newDim1Size, original.GetLength(0) + pos1);
+                int end2 = System.Math.Min(newDim2Size, original.GetLength(1) + pos2);
 
                 for (int x = pos1; x < end1; ++x)
                 {
