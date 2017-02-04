@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B549C0BE-D3F4-4296-9AEC-B14DAED96C24}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Amethyst</RootNamespace>
+    <AssemblyName>Amethyst</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Amethyst.XML</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Graphics\BMFont\FontChar.cs" />
+    <Compile Include="Graphics\BMFont\FontCommon.cs" />
+    <Compile Include="Graphics\BMFont\FontDesc.cs" />
+    <Compile Include="Graphics\BMFont\FontInfo.cs" />
+    <Compile Include="Graphics\BMFont\FontKerning.cs" />
+    <Compile Include="Graphics\BMFont\FontPage.cs" />
+    <Compile Include="Graphics\Color4.cs" />
+    <Compile Include="Graphics\Font.cs" />
+    <Compile Include="Graphics\GLContext.cs" />
+    <Compile Include="Graphics\GLSLProgram.cs" />
+    <Compile Include="Graphics\OpenGL\GL.cs" />
+    <Compile Include="Graphics\OpenGL\GLEnums.cs" />
+    <Compile Include="Graphics\OpenGL\WGL.cs" />
+    <Compile Include="Graphics\Texture.cs" />
+    <Compile Include="Graphics\Vertex.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Math\Box.cs" />
+    <Compile Include="Math\Helper.cs" />
+    <Compile Include="Math\Matrix4.cs" />
+    <Compile Include="Math\Point.cs" />
+    <Compile Include="Math\Size.cs" />
+    <Compile Include="Math\Vector2.cs" />
+    <Compile Include="Math\Vector4.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Fonts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Fonts.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Shaders.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Shaders.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Textures.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Textures.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Utility.cs" />
+    <Compile Include="Win32.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Graphics\OpenGL\glcorearb.h" />
+    <None Include="Resources\Fonts\SYSTEM_24.fnt" />
+    <None Include="Resources\Shaders\FragmentShader2D.glsl" />
+    <None Include="Resources\Shaders\VertexShader2D.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Fonts\SYSTEM_24.png" />
+    <Content Include="Resources\Textures\Blank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Fonts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shaders.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Shaders.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Textures.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Textures.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
