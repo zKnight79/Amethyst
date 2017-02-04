@@ -13,39 +13,82 @@ namespace Amethyst.Graphics
     {
         Dictionary<string, int> m_Attributes = new Dictionary<string, int>();
         Dictionary<string, int> m_Uniforms = new Dictionary<string, int>();
-        
+
+        /// <summary>
+        /// Get the Vertex Position location in the GLSL Program
+        /// </summary>
         public int VertexPositionLocation { get; private set; }
+        /// <summary>
+        /// Get the Vertex Color location in the GLSL Program
+        /// </summary>
         public int VertexColorLocation { get; private set; }
+        /// <summary>
+        /// Get the Vertex TextureCoord location in the GLSL Program
+        /// </summary>
         public int VertexTextureCoordLocation { get; private set; }
+        /// <summary>
+        /// Get the Texture Sampler location in the GLSL Program
+        /// </summary>
         public int TextureSamplerLocation { get; private set; }
+        /// <summary>
+        /// Get the MVP Matrix location in the GLSL Program
+        /// </summary>
         public int MVPMatrixLocation { get; private set; }
 
+        /// <summary>
+        /// Set the Vertex Position attribute name in the GLSL Program, default is "vertexPosition"
+        /// </summary>
+        /// <param name="attribName">The name of the VertexPosition attribute in the GLSL Program</param>
         public void SetVertexPositionAttribName(string attribName)
         {
             VertexPositionLocation = GetAttribLocation(attribName);
         }
+        /// <summary>
+        /// Set the Vertex Color attribute name in the GLSL Program, default is "vertexColor"
+        /// </summary>
+        /// <param name="attribName">The name of the Vertex Color attribute in the GLSL Program</param>
         public void SetVertexColorAttribName(string attribName)
         {
             VertexColorLocation = GetAttribLocation(attribName);
         }
+        /// <summary>
+        /// Set the Vertex Texture Coord attribute name in the GLSL Program, default is "vertexTexCoord"
+        /// </summary>
+        /// <param name="attribName">The name of the Vertex Texture Coord attribute in the GLSL Program</param>
         public void SetVertexTextureCoordAttribName(string attribName)
         {
             VertexTextureCoordLocation = GetAttribLocation(attribName);
         }
+        /// <summary>
+        /// Set the Texture Sampler uniform name in the GLSL Program, default is "texSampler"
+        /// </summary>
+        /// <param name="uniformName">The name of the Texture Sampler uniform in the GLSL Program</param>
         public void SetTextureSamplerUniformName(string uniformName)
         {
             TextureSamplerLocation = GetUniformLocation(uniformName);
         }
+        /// <summary>
+        /// Set the MVP Matrix uniform name in the GLSL Program, default is "MVP"
+        /// </summary>
+        /// <param name="uniformName">The name of the MVP Matrix uniform in the GLSL Program</param>
         public void SetMVPMatrixUniformName(string uniformName)
         {
             MVPMatrixLocation = GetUniformLocation(uniformName);
         }
 
+        /// <summary>
+        /// Change the Texture Sampler used by the GLSL Program
+        /// </summary>
+        /// <param name="sampler">The id of the Texture Sampler</param>
         public void ChangeTextureSampler(int sampler)
         {
             Use();
             GL.Uniform1(TextureSamplerLocation, sampler);
         }
+        /// <summary>
+        /// Change the MVP Matrix used by the GLSL Program
+        /// </summary>
+        /// <param name="matrix">The MVP Matrix to use</param>
         public void ChangeMVPMatrix(ref Matrix4 matrix)
         {
             Use();
@@ -271,7 +314,11 @@ namespace Amethyst.Graphics
             GL.Uniform2(loc, v.X, v.Y);
         }
 
-        public static GLSLProgram CreateDefaultProgram()
+        /// <summary>
+        /// Creates the Amethyst built-in GLSL Program, that uses standards Vertex and Fragment Shaders
+        /// </summary>
+        /// <returns>The Amethyst built-in GLSL Program</returns>
+        public static GLSLProgram CreateBuiltInProgram()
         {
             return new GLSLProgram(Shaders.VertexShader2D, Shaders.FragmentShader2D);
         }

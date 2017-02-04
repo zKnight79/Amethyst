@@ -7,10 +7,22 @@ using Amethyst.Graphics.OpenGL;
 
 namespace Amethyst.Graphics
 {
+    /// <summary>
+    /// Texture filtering enumeration
+    /// </summary>
     public enum TextureFiltering
     {
+        /// <summary>
+        /// Nearest filtering
+        /// </summary>
         Nearest,
+        /// <summary>
+        /// Linear filtering
+        /// </summary>
         Linear,
+        /// <summary>
+        /// Bi-linear filtering
+        /// </summary>
         Bilinear
     }
 
@@ -33,10 +45,11 @@ namespace Amethyst.Graphics
         public int Height { get; private set; }
 
         /// <summary>
-        /// Creates a new Texture from a GDI Bitmap, with given colorkey
+        /// Creates a new Texture from a GDI Bitmap, with given colorkey and TextureFiltering
         /// </summary>
         /// <param name="bmp">The GDI bitmap that will fill texture data</param>
         /// <param name="colorKey">The color that is assumed to be transparent</param>
+        /// <param name="filtering">The filter that will be used by default for this Texture</param>
         public Texture(Bitmap bmp, Color colorKey, TextureFiltering filtering)
         {
             Bitmap bmpTex = new Bitmap(bmp);
@@ -60,23 +73,52 @@ namespace Amethyst.Graphics
 
             bmpTex.Dispose();
         }
+        /// <summary>
+        /// Creates a new Texture from a GDI Bitmap, with given colorkey. Default filtering is Nearest
+        /// </summary>
+        /// <param name="bmp">The GDI bitmap that will fill texture data</param>
+        /// <param name="colorKey">The color that is assumed to be transparent</param>
         public Texture(Bitmap bmp, Color colorKey)
             : this(bmp, colorKey, TextureFiltering.Nearest) { }
+        /// <summary>
+        /// Creates a new Texture from a GDI Bitmap, with given TextureFiltering. No ColorKey will be applied
+        /// </summary>
+        /// <param name="bmp">The GDI bitmap that will fill texture data</param>
+        /// <param name="filtering">The filter that will be used by default for this Texture</param>
         public Texture(Bitmap bmp, TextureFiltering filtering)
             : this(bmp, Color.Empty, filtering) { }
+        /// <summary>
+        /// Creates a new Texture from a GDI Bitmap. No ColorKey will be applied. Default filtering is Nearest
+        /// </summary>
+        /// <param name="bmp">The GDI bitmap that will fill texture data</param>
         public Texture(Bitmap bmp)
             : this(bmp, Color.Empty) { }
         /// <summary>
-        /// Creates a new Texture from an image file, with given colorkey
+        /// Creates a new Texture from an image file, with given ColorKey and TextureFiltering
         /// </summary>
         /// <param name="fileName">The filename of the image that will fill texture data</param>
         /// <param name="colorKey">The color that is assumed to be transparent</param>
+        /// <param name="filtering">The filter that will be used by default for this Texture</param>
         public Texture(string fileName, Color colorKey, TextureFiltering filtering)
             : this(new Bitmap(TexturePath.GetFilePath(fileName)), colorKey, filtering) { }
+        /// <summary>
+        /// Creates a new Texture from an image file, with given ColorKey. Default filtering is Nearest
+        /// </summary>
+        /// <param name="fileName">The filename of the image that will fill texture data</param>
+        /// <param name="colorKey">The color that is assumed to be transparent</param>
         public Texture(string fileName, Color colorKey)
             : this(new Bitmap(TexturePath.GetFilePath(fileName)), colorKey) { }
+        /// <summary>
+        /// Creates a new Texture from an image file, with given TextureFiltering. No ColorKey will be applied.
+        /// </summary>
+        /// <param name="fileName">The filename of the image that will fill texture data</param>
+        /// <param name="filtering">The filter that will be used by default for this Texture</param>
         public Texture(string fileName, TextureFiltering filtering)
             : this(new Bitmap(TexturePath.GetFilePath(fileName)), filtering) { }
+        /// <summary>
+        /// Creates a new Texture from an image file. No ColorKey will be applied. Default filtering is Nearest
+        /// </summary>
+        /// <param name="fileName">The filename of the image that will fill texture data</param>
         public Texture(string fileName)
             : this(new Bitmap(TexturePath.GetFilePath(fileName))) { }
 
@@ -128,6 +170,10 @@ namespace Amethyst.Graphics
             GL.TexParameter(TextureTarget.GL_TEXTURE_2D, TextureParamName.GL_TEXTURE_MIN_FILTER, (int)minFilter);
             GL.TexParameter(TextureTarget.GL_TEXTURE_2D, TextureParamName.GL_TEXTURE_MAG_FILTER, (int)magFilter);
         }
+        /// <summary>
+        /// Set Texture filtering
+        /// </summary>
+        /// <param name="filtering">The filter to apply to the Texture</param>
         public void SetFilter(TextureFiltering filtering)
         {
             switch (filtering)
@@ -155,10 +201,17 @@ namespace Amethyst.Graphics
         }
     }
 
+    /// <summary>
+    /// Hold all path used to store texture files for the game. Current directory is added by default
+    /// </summary>
     public static class TexturePath
     {
         static List<string> m_PathList = new List<string>(new string[] { "" });
 
+        /// <summary>
+        /// Add a path to the TexturePath
+        /// </summary>
+        /// <param name="path">A relative or absolute folder path</param>
         public static void AddPath(string path)
         {
             if (!m_PathList.Contains(path))
@@ -167,6 +220,11 @@ namespace Amethyst.Graphics
             }
         }
 
+        /// <summary>
+        /// Search for the file in the TexturePath.
+        /// </summary>
+        /// <param name="fileName">The name of the file to search for</param>
+        /// <returns>The path of the found file, or fileName if nothing found</returns>
         public static string GetFilePath(string fileName)
         {
             foreach (string path in m_PathList)

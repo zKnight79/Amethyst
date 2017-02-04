@@ -15,11 +15,29 @@ namespace Amethyst.Graphics
     [StructLayout(LayoutKind.Sequential)]
     public struct Vertex
     {
+        /// <summary>
+        /// The offset of the Position part of the Vertex
+        /// </summary>
         public static readonly int PositionOffset = 0;
+        /// <summary>
+        /// The size of the Position part of the Vertex
+        /// </summary>
         public static readonly int PositionSize = 2;
+        /// <summary>
+        /// The offset of the Color part of the Vertex
+        /// </summary>
         public static readonly int ColorOffset = PositionOffset + Vector2.Size;
+        /// <summary>
+        /// The size of the Color part of the Vertex
+        /// </summary>
         public static readonly int ColorSize = 4;
+        /// <summary>
+        /// The offset of the Texture Coord part of the Vertex
+        /// </summary>
         public static readonly int TexCoordOffset = ColorOffset + Vector4.Size;
+        /// <summary>
+        /// The size of the Texture Coord part of the Vertex
+        /// </summary>
         public static readonly int TexCoordSize = 2;
         
         /// <summary>
