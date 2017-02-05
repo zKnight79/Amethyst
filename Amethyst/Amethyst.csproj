@@ -42,6 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine\Camera.cs" />
+    <Compile Include="Engine\DisplaySettings.cs" />
+    <Compile Include="Engine\Game.cs" />
+    <Compile Include="Engine\GameTime.cs" />
     <Compile Include="Graphics\BMFont\FontChar.cs" />
     <Compile Include="Graphics\BMFont\FontCommon.cs" />
     <Compile Include="Graphics\BMFont\FontDesc.cs" />

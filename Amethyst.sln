@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amethyst", "Amethyst\Amethy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amethyst_UnitTest", "Amethyst_UnitTest\Amethyst_UnitTest.csproj", "{DA8658FF-099D-4623-807B-B0FD0B99F851}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{51CE293B-DC20-47DD-932B-110F41489E1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S01_HelloWorld", "Samples\S01_HelloWorld\S01_HelloWorld.csproj", "{BF23C505-150A-4BA1-BFC4-953ACAC2A947}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +25,15 @@ Global
 		{DA8658FF-099D-4623-807B-B0FD0B99F851}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA8658FF-099D-4623-807B-B0FD0B99F851}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA8658FF-099D-4623-807B-B0FD0B99F851}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF23C505-150A-4BA1-BFC4-953ACAC2A947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF23C505-150A-4BA1-BFC4-953ACAC2A947}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF23C505-150A-4BA1-BFC4-953ACAC2A947}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF23C505-150A-4BA1-BFC4-953ACAC2A947}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BF23C505-150A-4BA1-BFC4-953ACAC2A947} = {51CE293B-DC20-47DD-932B-110F41489E1A}
 	EndGlobalSection
 EndGlobal

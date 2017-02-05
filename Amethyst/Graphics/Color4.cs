@@ -249,6 +249,7 @@ namespace Amethyst.Graphics
         public static class Colors
         {
             public static readonly Color4 AliceBlue = new Color4(Color.AliceBlue);
+            public static readonly Color4 Amethyst = new Color4(0.6f, 0.4f, 0.8f);
             public static readonly Color4 AntiqueWhite = new Color4(Color.AntiqueWhite);
             public static readonly Color4 Aqua = new Color4(Color.Aqua);
             public static readonly Color4 Aquamarine = new Color4(Color.Aquamarine);
