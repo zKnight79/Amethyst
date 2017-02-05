@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Amethyst.Graphics.OpenGL;
+﻿using Amethyst.Graphics.OpenGL;
 using Amethyst.Math;
+using System;
+using System.Collections.Generic;
 
 namespace Amethyst.Graphics
 {

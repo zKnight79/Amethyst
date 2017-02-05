@@ -44,8 +44,14 @@
   <ItemGroup>
     <Compile Include="Engine\Camera.cs" />
     <Compile Include="Engine\DisplaySettings.cs" />
+    <Compile Include="Engine\FlipEffect.cs" />
     <Compile Include="Engine\Game.cs" />
     <Compile Include="Engine\GameTime.cs" />
+    <Compile Include="Engine\SpriteBatch.cs" />
+    <Compile Include="Engine\SpriteBatchQueueItem.cs" />
+    <Compile Include="Engine\TextAlign.cs" />
+    <Compile Include="Engine\TextRenderMode.cs" />
+    <Compile Include="Graphics\AntiAliasingLevel.cs" />
     <Compile Include="Graphics\BMFont\FontChar.cs" />
     <Compile Include="Graphics\BMFont\FontCommon.cs" />
     <Compile Include="Graphics\BMFont\FontDesc.cs" />
@@ -60,6 +66,8 @@
     <Compile Include="Graphics\OpenGL\GLEnums.cs" />
     <Compile Include="Graphics\OpenGL\WGL.cs" />
     <Compile Include="Graphics\Texture.cs" />
+    <Compile Include="Graphics\TextureFiltering.cs" />
+    <Compile Include="Graphics\TexturePath.cs" />
     <Compile Include="Graphics\Vertex.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Math\Box.cs" />

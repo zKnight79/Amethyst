@@ -8,25 +8,6 @@ using Amethyst.Graphics.OpenGL;
 namespace Amethyst.Graphics
 {
     /// <summary>
-    /// Texture filtering enumeration
-    /// </summary>
-    public enum TextureFiltering
-    {
-        /// <summary>
-        /// Nearest filtering
-        /// </summary>
-        Nearest,
-        /// <summary>
-        /// Linear filtering
-        /// </summary>
-        Linear,
-        /// <summary>
-        /// Bi-linear filtering
-        /// </summary>
-        Bilinear
-    }
-
-    /// <summary>
     /// Represent a 2D Texture
     /// </summary>
     public class Texture : IDisposable
@@ -198,44 +179,6 @@ namespace Amethyst.Graphics
         {
             Bind();
             GL.TexParameter(TextureTarget.GL_TEXTURE_2D, TextureParamName.GL_TEXTURE_MAX_ANISOTROPY_EXT, maxAnisotropy);
-        }
-    }
-
-    /// <summary>
-    /// Hold all path used to store texture files for the game. Current directory is added by default
-    /// </summary>
-    public static class TexturePath
-    {
-        static List<string> m_PathList = new List<string>(new string[] { "" });
-
-        /// <summary>
-        /// Add a path to the TexturePath
-        /// </summary>
-        /// <param name="path">A relative or absolute folder path</param>
-        public static void AddPath(string path)
-        {
-            if (!m_PathList.Contains(path))
-            {
-                m_PathList.Add(path);
-            }
-        }
-
-        /// <summary>
-        /// Search for the file in the TexturePath.
-        /// </summary>
-        /// <param name="fileName">The name of the file to search for</param>
-        /// <returns>The path of the found file, or fileName if nothing found</returns>
-        public static string GetFilePath(string fileName)
-        {
-            foreach (string path in m_PathList)
-            {
-                string p = Path.Combine(path, fileName);
-                if (File.Exists(p))
-                {
-                    return p;
-                }
-            }
-            return fileName;
         }
     }
 }

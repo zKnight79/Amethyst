@@ -14,15 +14,15 @@ namespace Amethyst.Engine
         /// <summary>
         /// Get the elapsed time since the last frame
         /// </summary>
-        public float ElapsedTime { get; private set; }
+        public float ElapsedTime { get; private set; } = 0.0f;
         /// <summary>
         /// Get the total tunning time of the main loop
         /// </summary>
-        public float TotalRunningTime { get; private set; }
+        public float TotalRunningTime { get; private set; } = 0.0f;
         /// <summary>
         /// Get the total session time. Session time is user controled by ResetSession() method
         /// </summary>
-        public float SessionTime { get; private set; }
+        public float SessionTime { get; private set; } = 0.0f;
         /// <summary>
         /// Get the number of frames for the last elapsed second
         /// </summary>
@@ -37,12 +37,8 @@ namespace Amethyst.Engine
         /// </summary>
         public GameTime()
         {
-            m_LastFrame = DateTime.Now;
-            m_CurrentFrame = m_LastFrame;
+            m_CurrentFrame = m_LastFrame = DateTime.Now;
             LastFrameTime = m_CurrentFrame.Subtract(m_LastFrame);
-            ElapsedTime = 0.0f;
-            TotalRunningTime = 0.0f;
-            SessionTime = 0.0f;
         }
         
         /// <summary>

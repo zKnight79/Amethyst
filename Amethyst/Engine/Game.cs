@@ -7,6 +7,9 @@ using System.Windows.Forms;
 
 namespace Amethyst.Engine
 {
+    /// <summary>
+    /// The base Game class of Amethyst
+    /// </summary>
     public class Game : IDisposable
     {
         /// <summary>
@@ -41,15 +44,43 @@ namespace Amethyst.Engine
         /// Get the GameTime
         /// </summary>
         protected GameTime GameTime { get; private set; }
+        /// <summary>
+        /// Get or set the SpriteBatch used by the Game
+        /// </summary>
+        public SpriteBatch SpriteBatch { get; set; } = null;
+        /// <summary>
+        /// Get or set the system font used by the Game
+        /// </summary>
+        public Font SystemFont { get; set; } = null;
 
         /// <summary>
         /// Dispose all resources used by the Game
         /// </summary>
         public void Dispose()
         {
-            if(Form!=null && !Form.IsDisposed)
+            if (Program2D != null)
             {
+                Program2D.Dispose();
+                Program2D = null;
+            }
+
+            if (GLContext != null)
+            {
+                GLContext.Dispose();
+                GLContext = null;
+            }
+
+            if (DisplaySettings.Fullscreen)
+            {
+                Logger.WriteLine("Restoring display settings");
+                Win32.ChangeDisplaySettings(null, 0);
+            }
+
+            if (Form != null && !Form.IsDisposed)
+            {
+                Logger.WriteLine("Disposing Game Window");
                 Form.Dispose();
+                Form = null;
             }
         }
 
@@ -115,6 +146,16 @@ namespace Amethyst.Engine
                 }
                 #endregion
             }
+            if (!DisplaySettings.EnableResizing)
+            {
+                Form.MaximizeBox = false;
+                Form.MinimumSize = Form.MaximumSize = Form.Size;
+                Form.SizeGripStyle = SizeGripStyle.Hide;
+                if (!DisplaySettings.Fullscreen)
+                {
+                    Form.FormBorderStyle = FormBorderStyle.FixedDialog;
+                }
+            }
             Form.Resize += (object sender, EventArgs e) => { OnResize(); };
             #endregion
 
@@ -146,6 +187,8 @@ namespace Amethyst.Engine
 
             #region CREATE AMETYST PRESETS
             Program2D = GLSLProgram.CreateBuiltInProgram();
+            SpriteBatch = new SpriteBatch();
+            SystemFont = Font.FromXMLSrc(Fonts.SYSTEM_24, new Texture(Fonts.SYSTEM_24_TEX, System.Drawing.Color.Magenta));
             #endregion
 
             OnResize();
@@ -203,7 +246,9 @@ namespace Amethyst.Engine
         private void Render()
         {
             GL.Clear(ClearMask.GL_COLOR_BUFFER_BIT);
+            SpriteBatch.Begin(Program2D);
             OnRender();
+            SpriteBatch.End();
             GLContext.SwapBuffers();
         }
         /// <summary>

@@ -52,5 +52,25 @@ namespace Amethyst.Math
             a = b;
             b = temp;
         }
+
+        /// <summary>
+        /// Compute the sine of a angle in degrees
+        /// </summary>
+        /// <param name="angle">An angle in degrees</param>
+        /// <returns>The sine of the angle</returns>
+        public static float Sin(float angle)
+        {
+            return (float)System.Math.Sin(angle * DEG2RAD);
+        }
+
+        /// <summary>
+        /// Compute the cosine of a angle in degrees
+        /// </summary>
+        /// <param name="angle">An angle in degrees</param>
+        /// <returns>The cosine of the angle</returns>
+        public static float Cos(float angle)
+        {
+            return (float)System.Math.Cos(angle * DEG2RAD);
+        }
     }
 }

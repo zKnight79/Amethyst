@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Amethyst.Engine
 {
+    /// <summary>
+    /// Display settings for the Game
+    /// </summary>
     public class DisplaySettings
     {
         /// <summary>
@@ -40,7 +43,14 @@ namespace Amethyst.Engine
         /// Get or set the anti-aliasing level (Default : None)
         /// </summary>
         public AntiAliasingLevel MSAA { get; set; } = AntiAliasingLevel.None;
-
+        /// <summary>
+        /// Get or set if the game window can be resized (Default : false)
+        /// </summary>
+        public bool EnableResizing { get; set; } = false;
+        /// <summary>
+        /// Returns a string that describes the DisplaySettings
+        /// </summary>
+        /// <returns>A well formatted string</returns>
         public override string ToString()
         {
             return string.Format(
