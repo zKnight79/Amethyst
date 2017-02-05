@@ -119,6 +119,11 @@ namespace Amethyst.Engine
             #region INIT FORM
             Form = new Form();
             Form.ClientSize = new System.Drawing.Size(DisplaySettings.Width, DisplaySettings.Height);
+            if (!DisplaySettings.EnableResizing)
+            {
+                Form.MaximizeBox = false;
+                Form.MinimumSize = Form.MaximumSize = Form.Size;
+            }
             Form.StartPosition = FormStartPosition.CenterScreen;
             Form.Text = "Powered by Amethyst Game Library";
             if (DisplaySettings.Fullscreen)
@@ -145,16 +150,6 @@ namespace Amethyst.Engine
                     Logger.WriteLine(">> Success");
                 }
                 #endregion
-            }
-            if (!DisplaySettings.EnableResizing)
-            {
-                Form.MaximizeBox = false;
-                Form.MinimumSize = Form.MaximumSize = Form.Size;
-                Form.SizeGripStyle = SizeGripStyle.Hide;
-                if (!DisplaySettings.Fullscreen)
-                {
-                    Form.FormBorderStyle = FormBorderStyle.FixedDialog;
-                }
             }
             Form.Resize += (object sender, EventArgs e) => { OnResize(); };
             #endregion
