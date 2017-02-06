@@ -27,7 +27,16 @@ namespace Amethyst.Engine
         /// <summary>
         /// Get or set the Background color (Default : Amethyst, of course)
         /// </summary>
-        public Color4 BackgroundColor { get; set; } = Color4.Colors.Amethyst;
+        public Color4 BackgroundColor
+        {
+            get { return m_BackgroundColor; }
+            set
+            {
+                m_BackgroundColor = value;
+                GL.ClearColor(m_BackgroundColor);
+            }
+        }
+        private Color4 m_BackgroundColor;
         /// <summary>
         /// Get of set the GLSL Program used by the Game
         /// </summary>
@@ -58,6 +67,8 @@ namespace Amethyst.Engine
         /// </summary>
         public void Dispose()
         {
+            OnRelease();
+
             if (Program2D != null)
             {
                 Program2D.Dispose();
@@ -104,7 +115,6 @@ namespace Amethyst.Engine
                 Application.DoEvents();
             }
             Logger.WriteLine("Exiting the Game Loop");
-            OnRelease();
         }
         /// <summary>
         /// Hook method called by Run(), just after exiting the Game loop<br />
@@ -181,6 +191,7 @@ namespace Amethyst.Engine
             #endregion
 
             #region CREATE AMETYST PRESETS
+            BackgroundColor = Color4.Colors.Amethyst;
             Program2D = GLSLProgram.CreateBuiltInProgram();
             SpriteBatch = new SpriteBatch();
             SystemFont = Font.FromXMLSrc(Fonts.SYSTEM_24, new Texture(Fonts.SYSTEM_24_TEX, System.Drawing.Color.Magenta));
@@ -242,13 +253,13 @@ namespace Amethyst.Engine
         {
             GL.Clear(ClearMask.GL_COLOR_BUFFER_BIT);
             SpriteBatch.Begin(Program2D);
-            OnRender();
+            OnRender(SpriteBatch);
             SpriteBatch.End();
             GLContext.SwapBuffers();
         }
         /// <summary>
         /// Hook method called by Run(), during the Game loop<br />
         /// </summary>
-        protected virtual void OnRender() { }
+        protected virtual void OnRender(SpriteBatch spriteBatch) { }
     }
 }

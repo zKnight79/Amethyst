@@ -111,34 +111,22 @@ namespace Amethyst.Math
         /// Get the Top-Left corner of the Box
         /// </summary>
         [XmlIgnore]
-        public Point TopLeft
-        {
-            get { return Position; }
-        }
+        public Point TopLeft => Position;
         /// <summary>
         /// Get the Top-Right corner of the Box
         /// </summary>
         [XmlIgnore]
-        public Point TopRight
-        {
-            get { return new Point(Right, Top); }
-        }
+        public Point TopRight => new Point(Right, Top);
         /// <summary>
         /// Get the Bottom-Left corner of the Box
         /// </summary>
         [XmlIgnore]
-        public Point BottomLeft
-        {
-            get { return new Point(Left, Bottom); }
-        }
+        public Point BottomLeft => new Point(Left, Bottom);
         /// <summary>
         /// Get the Bottom-Right corner of the Box
         /// </summary>
         [XmlIgnore]
-        public Point BottomRight
-        {
-            get { return new Point(Right, Bottom); }
-        }
+        public Point BottomRight => new Point(Right, Bottom);
 
         /// <summary>
         /// Creates a new Rectangle by explicitely setting its top-left coords and size
@@ -169,38 +157,32 @@ namespace Amethyst.Math
         /// </summary>
         /// <param name="box">The Box we want to know if our Box intersects with</param>
         /// <returns>true if there is an intersection, false otherwise</returns>
-        public bool IntersectsWith(Box box)
-        {
-            return !((Left > box.Right) || (Right < box.Left) || (Top > box.Bottom) || (Bottom < box.Top));
-        }
+        public bool IntersectsWith(Box box) => !((Left > box.Right) || (Right < box.Left) || (Top > box.Bottom) || (Bottom < box.Top));
         /// <summary>
         /// Tests if a coordinate is contained in the Box
         /// </summary>
         /// <param name="x">The abscissa of the coordinate to be tested</param>
         /// <param name="y">The ordinate of the coordinate to be tested</param>
         /// <returns>true if the coordinate is contained in the Box, false otherwise</returns>
-        public bool Contains(float x, float y)
-        {
-            return !((x < Left) || (x > Right) || (y < Top) || (y > Bottom));
-        }
+        public bool Contains(float x, float y) => !((x < Left) || (x > Right) || (y < Top) || (y > Bottom));
         /// <summary>
         /// Tests if a Point is contained in the Box
         /// </summary>
         /// <param name="p">The Point to be tested</param>
         /// <returns>true if the Point is contained in the Box, false otherwise</returns>
-        public bool Contains(Point p)
-        {
-            return Contains(p.X, p.Y);
-        }
+        public bool Contains(Point p) => Contains(p.X, p.Y);
 
         /// <summary>
         /// Explicit conversion into a GDI Rectangle
         /// </summary>
         /// <param name="box">The Box to convert</param>
         /// <returns>A GDI Rectangle</returns>
-        public static explicit operator Rectangle(Box box)
-        {
-            return new Rectangle((int)box.X, (int)box.Y, (int)box.Width, (int)box.Height);
-        }
+        public static explicit operator Rectangle(Box box) => new Rectangle((int)box.X, (int)box.Y, (int)box.Width, (int)box.Height);
+
+        /// <summary>
+        /// Get a text representation of the Box
+        /// </summary>
+        /// <returns>A text representation of the Box</returns>
+        public override string ToString() => string.Format("[Box](X : {0}, Y : {1}, Width : {2}, Height : {3})", X, Y, Width, Height);
     }
 }

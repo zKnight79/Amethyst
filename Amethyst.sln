@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{51CE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S01_HelloWorld", "Samples\S01_HelloWorld\S01_HelloWorld.csproj", "{BF23C505-150A-4BA1-BFC4-953ACAC2A947}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S02_BouncingBall", "Samples\S02_BouncingBall\S02_BouncingBall.csproj", "{F8453461-A978-4070-AE2F-D7030D44BB06}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,11 +31,16 @@ Global
 		{BF23C505-150A-4BA1-BFC4-953ACAC2A947}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF23C505-150A-4BA1-BFC4-953ACAC2A947}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF23C505-150A-4BA1-BFC4-953ACAC2A947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8453461-A978-4070-AE2F-D7030D44BB06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8453461-A978-4070-AE2F-D7030D44BB06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8453461-A978-4070-AE2F-D7030D44BB06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8453461-A978-4070-AE2F-D7030D44BB06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BF23C505-150A-4BA1-BFC4-953ACAC2A947} = {51CE293B-DC20-47DD-932B-110F41489E1A}
+		{F8453461-A978-4070-AE2F-D7030D44BB06} = {51CE293B-DC20-47DD-932B-110F41489E1A}
 	EndGlobalSection
 EndGlobal

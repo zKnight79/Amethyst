@@ -47,6 +47,8 @@
     <Compile Include="Engine\FlipEffect.cs" />
     <Compile Include="Engine\Game.cs" />
     <Compile Include="Engine\GameTime.cs" />
+    <Compile Include="Engine\SceneNode.cs" />
+    <Compile Include="Engine\SceneNodes\Sprite.cs" />
     <Compile Include="Engine\SpriteBatch.cs" />
     <Compile Include="Engine\SpriteBatchQueueItem.cs" />
     <Compile Include="Engine\TextAlign.cs" />
