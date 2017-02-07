@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -52,7 +53,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="SceneNodeTest.cs" />
+    <Compile Include="Engine\SceneNodeTest.cs" />
+    <Compile Include="Math\TestBox.cs" />
+    <Compile Include="Math\TestHelper.cs" />
     <Compile Include="UtilityTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

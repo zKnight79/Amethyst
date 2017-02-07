@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Amethyst.Engine;
 using Amethyst.Math;
 
-namespace Amethyst_UnitTest
+namespace Amethyst_UnitTest.Engine
 {
     /// <summary>
     /// Description résumée pour SceneNodeTest
@@ -67,7 +67,7 @@ namespace Amethyst_UnitTest
         }
 
         [TestMethod]
-        public void TestAngle()
+        public void TestNodeAngle()
         {
             SceneNodeImpl node = new SceneNodeImpl(new Box(0, 0, 32, 32));
             node.Angle += 200;
