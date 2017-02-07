@@ -1,0 +1,25 @@
+1) Add unit tests for
+   - Math.Box
+   - Math.Helper
+   - Math.Matrix4
+   - Math.Point
+   - Math.Size
+   - Math.Vector2
+   - Math.Vector4
+   - Graphics.Color4
+2) Add Engine Features
+   - Background Scene Node (fixed picture)
+     - Add a background in the Bouncing Ball Sample
+   - Add Sample 03 => Dynamic backgrounds
+     - TiledBackground Scene Node (with automatic scrolling)
+       - Promote when stable
+     - 2-sided / randomly-flipping / Tile Background
+       - Promote when stable
+   - Add Sample 04 => Scene Node Animators
+     - Add RotateAnimator
+       - Promote when stable
+     - Add TurnAroundAnimator
+       - Promote when stable
+     - Add StraightMoveAnimator
+       - Promote when stable
+3) More to come ...
