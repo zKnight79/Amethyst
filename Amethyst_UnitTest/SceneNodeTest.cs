@@ -65,14 +65,11 @@ namespace Amethyst_UnitTest
             public SceneNodeImpl(Box box) : base(box) { }
             protected override void OnRender(SpriteBatch spriteBatch) { }
         }
+
         [TestMethod]
         public void TestAngle()
         {
-            SceneNodeImpl node = new SceneNodeImpl(new Box(0, 0, 200, 100));
-            node.BoxChanged += () => TestContext.WriteLine("BoxChanged => " + node.Box);
-            node.Box = new Box(0, 0, 300, 300);
-            node.Box = new Box(100, 80, 50, 50);
-
+            SceneNodeImpl node = new SceneNodeImpl(new Box(0, 0, 32, 32));
             node.Angle += 200;
             Assert.AreEqual(200, node.Angle);
             node.Angle += 200;
@@ -83,6 +80,16 @@ namespace Amethyst_UnitTest
             Assert.AreEqual(80, node.Angle);
             node.Angle -= 300;
             Assert.AreEqual(140, node.Angle);
+        }
+
+        [TestMethod]
+        public void TestNodeBoxChanged()
+        {
+            SceneNodeImpl node = new SceneNodeImpl(new Box(0, 0, 200, 100));
+            node.Box = new Box(0, 0, 32, 32);
+            node.BoxChanged += () => TestContext.WriteLine("BoxChanged => " + node.Box);
+            node.Box = new Box(0, 0, 300, 300);
+            node.Box = new Box(100, 80, 50, 50);
         }
     }
 }
