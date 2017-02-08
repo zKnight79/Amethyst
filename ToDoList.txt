@@ -1,28 +1,30 @@
-- Add Sample 03 => Dynamic backgrounds
-  - TiledBackground Scene Node (with automatic scrolling)
-    - Promote when stable
-  - 2-sided / randomly-flipping / Tile Background
-    - Promote when stable
-- Add Sample 04 => Scene Node Animators
+- Add Sample 03 => Scene Node Animators
   - Add RotateAnimator
     - Promote when stable
   - Add TurnAroundAnimator
     - Promote when stable
   - Add StraightMoveAnimator
     - Promote when stable
-- Add Sample 05 => Respond to keyboard inputs
+- Add Sample 04 => Respond to keyboard inputs
   - Add Keyboard input support
-- Add Sample 06 => Respond to mouse inputs
+- Add Sample 05 => Respond to mouse inputs
   - Add Mouse input support
-- Add Sample 07 => Scene management
+- Add Sample 06 => Scene management
   - Add Scene class
   - Add SceneManager class
-- Add Sample 08 => Assets management
+- Add Sample 07 => Assets management
   - Add AssetManager class (Singleton)
 - Add Sample 08 => Music and Sound FX
   - Add Music and SFX support (trough CSCore ?)
 - Add Sample 09 => Animated sprites
   - Add Animated sprite support via sprite sheets
+
+Some day :
+- Add Sample ?? => Dynamic backgrounds
+  - TiledBackground Scene Node (with automatic scrolling)
+    - Promote when stable
+  - 2-sided / randomly-flipping / Tile Background
+    - Promote when stable
 
 More to come ...
 
