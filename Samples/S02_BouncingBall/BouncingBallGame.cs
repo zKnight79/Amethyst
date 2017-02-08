@@ -1,4 +1,5 @@
 ﻿using Amethyst.Engine;
+using Amethyst.Engine.Animators;
 using Amethyst.Engine.SceneNodes;
 using Amethyst.Graphics;
 using Amethyst.Math;
@@ -15,10 +16,10 @@ namespace S02_BouncingBall
             }
         }
 
-        Texture ballTexture;
         Texture beachTexture;
-        Sprite ballSprite;
+        Texture ballTexture;
         Sprite backroundSprite;
+        Sprite ballSprite;
 
         protected override void OnInit()
         {
@@ -27,24 +28,24 @@ namespace S02_BouncingBall
             ballTexture = new Texture(Textures.TOYBALL, TextureFiltering.Bilinear);
             beachTexture = new Texture(Textures.BEACH_800x600, TextureFiltering.Bilinear);
 
+            backroundSprite = new Sprite(ViewPort, beachTexture);
             ballSprite = new Sprite(new Box(0, 0, 100, 100), ballTexture)
             {
                 BoxCenter = ViewPort.Center
             };
-            backroundSprite = new Sprite(ViewPort, beachTexture);
+            ballSprite.AddAnimator(new RotateAnimator(360, 10));
         }
         protected override void OnRelease()
         {
             ballTexture.Dispose();
+            beachTexture.Dispose();
         }
 
-        private float rotationSpeed = 360; // (degrees per second)
         private float xAxisSpeed = 300;    // (pixels per second)
         private float yAxisSpeed = 240;    // (pixels per second)
         protected override void OnUpdate(float elapsedTime)
         {
-            // Apply rotation speed
-            ballSprite.Angle += elapsedTime * rotationSpeed;
+            ballSprite.Update(elapsedTime);
 
             // Apply x-axis speed
             ballSprite.BoxX += elapsedTime * xAxisSpeed;
@@ -63,14 +64,12 @@ namespace S02_BouncingBall
             {
                 yAxisSpeed = -yAxisSpeed;
             }
-
-            ballSprite.Update(elapsedTime);
         }
         protected override void OnRender(SpriteBatch spriteBatch)
         {
             backroundSprite.Render(spriteBatch);
             ballSprite.Render(spriteBatch);
-            spriteBatch.DrawText("FPS : " + GameTime.FramesPerSecond, SystemFont, TextRenderMode.Inline, ViewPort, Color4.Colors.White);
+            spriteBatch.DrawText("FPS : " + GameTime.FramesPerSecond, SystemFont, TextRenderMode.Inline, ViewPort, Color4.Colors.DarkRed);
         }
     }
 }

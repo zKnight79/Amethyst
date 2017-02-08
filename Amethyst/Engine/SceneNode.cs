@@ -1,5 +1,6 @@
 ﻿using Amethyst.Graphics;
 using Amethyst.Math;
+using System.Collections.Generic;
 
 namespace Amethyst.Engine
 {
@@ -258,7 +259,7 @@ namespace Amethyst.Engine
         /// <param name="elapsedTime">Frame time in seconds</param>
         public void Update(float elapsedTime)
         {
-            // Add Animator here
+            Animate(elapsedTime);
             OnUpdate(elapsedTime);
         }
         /// <summary>
@@ -269,7 +270,39 @@ namespace Amethyst.Engine
         #endregion
 
         #region ANIMATING
+        List<Animator> m_Animators = new List<Animator>();
+        /// <summary>
+        /// Get number of animators currently attached to the Node
+        /// </summary>
+        public int AnimatorCount => m_Animators.Count;
 
+        private void Animate(float elapsedTime)
+        {
+            Animator[] animators = m_Animators.ToArray();
+            foreach (Animator animator in animators)
+            {
+                animator.Update(this, elapsedTime);
+            }
+        }
+
+        /// <summary>
+        /// Add an animator to the Node
+        /// </summary>
+        /// <param name="animator">The animator to add to the Node</param>
+        public void AddAnimator(Animator animator)
+        {
+            m_Animators.Add(animator);
+            animator.Finished += (a) => { m_Animators.Remove(a); };
+            animator.Start(this);
+        }
+
+        /// <summary>
+        /// Remove all animators from the Node
+        /// </summary>
+        public void ClearAnimators()
+        {
+            m_Animators.Clear();
+        }
         #endregion
     }
 

@@ -1,6 +1,4 @@
 - Add Sample 03 => Scene Node Animators
-  - Add RotateAnimator
-    - Promote when stable
   - Add TurnAroundAnimator
     - Promote when stable
   - Add StraightMoveAnimator

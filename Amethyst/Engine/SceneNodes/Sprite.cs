@@ -12,6 +12,7 @@ namespace Amethyst.Engine.SceneNodes
         /// Creates an instance of Sprite
         /// </summary>
         /// <param name="box">The Box where to render the Sprite</param>
+        /// <param name="texture">The Texture of the Sprite</param>
         public Sprite(Box box, Texture texture) : base(box)
         {
             Texture = texture;

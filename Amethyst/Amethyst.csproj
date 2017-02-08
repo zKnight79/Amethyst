@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine\Animator.cs" />
+    <Compile Include="Engine\Animators\RotateAnimator.cs" />
     <Compile Include="Engine\Camera.cs" />
     <Compile Include="Engine\DisplaySettings.cs" />
     <Compile Include="Engine\FlipEffect.cs" />
@@ -123,6 +125,7 @@
       <LastGenOutput>Textures.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
