@@ -478,7 +478,7 @@ namespace Amethyst.Math
         /// <returns>The transformed Vector2</returns>
         public Vector2 Transform(Vector2 v)
         {
-            return new Vector2(m_R1C1 * v.X + m_R1C2 * v.Y, m_R2C1 * v.X + m_R2C2 * v.Y);
+            return new Vector2(m_R1C1 * v.X + m_R1C2 * v.Y + m_R1C4, m_R2C1 * v.X + m_R2C2 * v.Y + m_R2C4);
         }
     }
 }

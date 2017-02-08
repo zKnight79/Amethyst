@@ -1,25 +1,30 @@
-1) Add unit tests for
-   -X Math.Box
-   -X Math.Helper
-   - Math.Matrix4
-   - Math.Point
-   - Math.Size
-   - Math.Vector2
-   - Math.Vector4
-   - Graphics.Color4
-2) Add Engine Features
-   - Background Scene Node (fixed picture)
-     - Add a background in the Bouncing Ball Sample
-   - Add Sample 03 => Dynamic backgrounds
-     - TiledBackground Scene Node (with automatic scrolling)
-       - Promote when stable
-     - 2-sided / randomly-flipping / Tile Background
-       - Promote when stable
-   - Add Sample 04 => Scene Node Animators
-     - Add RotateAnimator
-       - Promote when stable
-     - Add TurnAroundAnimator
-       - Promote when stable
-     - Add StraightMoveAnimator
-       - Promote when stable
-3) More to come ...
+- Add Sample 03 => Dynamic backgrounds
+  - TiledBackground Scene Node (with automatic scrolling)
+    - Promote when stable
+  - 2-sided / randomly-flipping / Tile Background
+    - Promote when stable
+- Add Sample 04 => Scene Node Animators
+  - Add RotateAnimator
+    - Promote when stable
+  - Add TurnAroundAnimator
+    - Promote when stable
+  - Add StraightMoveAnimator
+    - Promote when stable
+- Add Sample 05 => Respond to keyboard inputs
+  - Add Keyboard input support
+- Add Sample 06 => Respond to mouse inputs
+  - Add Mouse input support
+- Add Sample 07 => Scene management
+  - Add Scene class
+  - Add SceneManager class
+- Add Sample 08 => Assets management
+  - Add AssetManager class (Singleton)
+- Add Sample 08 => Music and Sound FX
+  - Add Music and SFX support (trough CSCore ?)
+- Add Sample 09 => Animated sprites
+  - Add Animated sprite support via sprite sheets
+
+More to come ...
+
+
+(try porting this tutorial to Amethyst : https://gamedevelopment.tutsplus.com/tutorials/make-a-neon-vector-shooter-in-jmonkeyengine-the-basics--gamedev-11616)

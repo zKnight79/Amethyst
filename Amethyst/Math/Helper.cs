@@ -72,5 +72,28 @@ namespace Amethyst.Math
         {
             return (float)System.Math.Cos(angle * DEG2RAD);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="epsilon"></param>
+        /// <returns></returns>
+        public static bool NearlyEquals(float a, float b, float epsilon=0.000001f)
+        {
+            if (a == b)
+            {
+                return true;
+            }
+
+            float diff = System.Math.Abs(a - b);
+            if (a == 0 || b == 0 || diff < float.Epsilon)
+            {
+                return diff < epsilon;
+            }
+            //return diff / Math.min((absA + absB), Float.MAX_VALUE) < epsilon
+            return (diff / (System.Math.Abs(a) + System.Math.Abs(b))) < epsilon;
+        }
     }
 }

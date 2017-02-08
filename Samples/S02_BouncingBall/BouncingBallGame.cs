@@ -16,19 +16,22 @@ namespace S02_BouncingBall
         }
 
         Texture ballTexture;
+        Texture beachTexture;
         Sprite ballSprite;
+        Sprite backroundSprite;
 
         protected override void OnInit()
         {
             BackgroundColor = Color4.Colors.SandyBrown;
 
             ballTexture = new Texture(Textures.TOYBALL, TextureFiltering.Bilinear);
+            beachTexture = new Texture(Textures.BEACH_800x600, TextureFiltering.Bilinear);
 
-            ballSprite = new Sprite(new Box(0, 0, 100, 100))
+            ballSprite = new Sprite(new Box(0, 0, 100, 100), ballTexture)
             {
-                Texture = ballTexture,
                 BoxCenter = ViewPort.Center
             };
+            backroundSprite = new Sprite(ViewPort, beachTexture);
         }
         protected override void OnRelease()
         {
@@ -65,6 +68,7 @@ namespace S02_BouncingBall
         }
         protected override void OnRender(SpriteBatch spriteBatch)
         {
+            backroundSprite.Render(spriteBatch);
             ballSprite.Render(spriteBatch);
             spriteBatch.DrawText("FPS : " + GameTime.FramesPerSecond, SystemFont, TextRenderMode.Inline, ViewPort, Color4.Colors.White);
         }

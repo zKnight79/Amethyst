@@ -7,12 +7,12 @@ using Amethyst.Math;
 namespace Amethyst_UnitTest.Math
 {
     /// <summary>
-    /// Description résumée pour TestBox
+    /// Description résumée pour TestHelper
     /// </summary>
     [TestClass]
-    public class TestBox
+    public class HelperTest
     {
-        public TestBox()
+        public HelperTest()
         {
             //
             // TODO: ajoutez ici la logique du constructeur
@@ -60,54 +60,31 @@ namespace Amethyst_UnitTest.Math
         #endregion
 
         [TestMethod]
-        public void TestContructors()
+        public void TestClamp()
         {
-            System.Drawing.Rectangle rectangle = new System.Drawing.Rectangle(10, 20, 50, 100);
-            foreach (Box box in new Box[]
-            {
-                new Box(rectangle),
-                new Box(rectangle.Location.ToAmethystPoint(), rectangle.Size.ToAmethystSize()),
-                new Box(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height)
-            })
-            {
-                Assert.AreEqual(10, box.Left);
-                Assert.AreEqual(20, box.Top);
-                Assert.AreEqual(60, box.Right);
-                Assert.AreEqual(120, box.Bottom);
-
-                Assert.AreEqual(rectangle, (System.Drawing.Rectangle)box);
-            }
+            Assert.AreEqual(1, Helper.Clamp(1, 0.5f, 1.5f));
+            Assert.AreEqual(0.7f, Helper.Clamp(0.7f, 0.5f, 1.5f));
+            Assert.AreEqual(0.5f, Helper.Clamp(0.2f, 0.5f, 1.5f));
+            Assert.AreEqual(1.5f, Helper.Clamp(2, 0.5f, 1.5f));
         }
 
         [TestMethod]
-        public void TestIntersects()
+        public void TestSwap()
         {
-            Box boxA = new Box(100, 100, 100, 100);
-            Box boxB = new Box(160, 160, 100, 100);
-            Box boxC = new Box(220, 220, 100, 100);
+            int a = 29;
+            int b = 13;
 
-            Assert.IsTrue(boxA.IntersectsWith(boxB));
-            Assert.IsFalse(boxA.IntersectsWith(boxC));
-            Assert.IsTrue(boxB.IntersectsWith(boxC));
-        }
+            Helper.Swap<int>(ref a, ref b);
+            Assert.AreEqual(13, a);
+            Assert.AreEqual(29, b);
 
-        [TestMethod]
-        public void TestContains()
-        {
-            Box box = new Box(100, 100, 100, 100);
-            Point pointA = new Point(120, 120);
-            Point pointB = new Point(180, 180);
-            Point pointC = new Point(220, 220);
-            Point pointD = new Point(20, 20);
-            Point pointE = new Point(150, 220);
-            Point pointF = new Point(20, 150);
+            Helper.Swap<int>(ref a, ref b);
+            Assert.AreEqual(29, a);
+            Assert.AreEqual(13, b);
 
-            Assert.IsTrue(box.Contains(pointA));
-            Assert.IsTrue(box.Contains(pointB));
-            Assert.IsFalse(box.Contains(pointC));
-            Assert.IsFalse(box.Contains(pointD));
-            Assert.IsFalse(box.Contains(pointE));
-            Assert.IsFalse(box.Contains(pointF));
+            Helper.Swap<int>(ref a, ref b);
+            Assert.AreEqual(13, a);
+            Assert.AreEqual(29, b);
         }
     }
 }

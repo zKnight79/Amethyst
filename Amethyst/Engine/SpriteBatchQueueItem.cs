@@ -47,10 +47,10 @@ namespace Amethyst.Engine
 
             #region VERTEX TEXTURE COORD
             Box rSrc = (src == null) ? new Box(0, 0, Texture.Width, Texture.Height) : src.Value;
-            Vector2 uvTopLeft = new Vector2(Texture.UFromPixelX(rSrc.Left), Texture.UFromPixelX(rSrc.Top));
-            Vector2 uvBottomLeft = new Vector2(Texture.UFromPixelX(rSrc.Left), Texture.UFromPixelX(rSrc.Bottom));
-            Vector2 uvTopRight = new Vector2(Texture.UFromPixelX(rSrc.Right), Texture.UFromPixelX(rSrc.Top));
-            Vector2 uvBottomRight = new Vector2(Texture.UFromPixelX(rSrc.Right), Texture.UFromPixelX(rSrc.Bottom));
+            Vector2 uvTopLeft = new Vector2(Texture.UFromPixelX(rSrc.Left), Texture.VFromPixelY(rSrc.Top));
+            Vector2 uvBottomLeft = new Vector2(Texture.UFromPixelX(rSrc.Left), Texture.VFromPixelY(rSrc.Bottom));
+            Vector2 uvTopRight = new Vector2(Texture.UFromPixelX(rSrc.Right), Texture.VFromPixelY(rSrc.Top));
+            Vector2 uvBottomRight = new Vector2(Texture.UFromPixelX(rSrc.Right), Texture.VFromPixelY(rSrc.Bottom));
             #region APPLY FLIP EFFECT
             if ((flipEffect & FlipEffect.Horizontally) == FlipEffect.Horizontally)
             {

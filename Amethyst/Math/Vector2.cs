@@ -112,7 +112,7 @@ namespace Amethyst.Math
         /// <returns>true if v1 is equal to v2, false if v1 is different of v2</returns>
         public static bool operator ==(Vector2 v1, Vector2 v2)
         {
-            return (v1.X == v2.X) && (v1.Y == v2.Y);
+            return (Helper.NearlyEquals(v1.X, v2.X) && Helper.NearlyEquals(v1.Y, v2.Y));
         }
         /// <summary>
         /// Tests if 2 Vector2 are differents
@@ -122,7 +122,7 @@ namespace Amethyst.Math
         /// <returns>true if v1 is different of v2, false if v1 is equal to v2</returns>
         public static bool operator !=(Vector2 v1, Vector2 v2)
         {
-            return (v1.X != v2.X) || (v1.Y != v2.Y);
+            return (!Helper.NearlyEquals(v1.X, v2.X) || !Helper.NearlyEquals(v1.Y, v2.Y));
         } 
         #endregion
 

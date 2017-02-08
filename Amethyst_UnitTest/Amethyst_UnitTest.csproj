@@ -54,8 +54,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Engine\SceneNodeTest.cs" />
-    <Compile Include="Math\TestBox.cs" />
-    <Compile Include="Math\TestHelper.cs" />
+    <Compile Include="Math\BoxTest.cs" />
+    <Compile Include="Math\HelperTest.cs" />
+    <Compile Include="Math\Matrix4Test.cs" />
     <Compile Include="UtilityTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

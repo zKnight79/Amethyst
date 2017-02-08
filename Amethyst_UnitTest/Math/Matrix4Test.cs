@@ -7,12 +7,12 @@ using Amethyst.Math;
 namespace Amethyst_UnitTest.Math
 {
     /// <summary>
-    /// Description résumée pour TestHelper
+    /// Description résumée pour TestMatrix4
     /// </summary>
     [TestClass]
-    public class TestHelper
+    public class Matrix4Test
     {
-        public TestHelper()
+        public Matrix4Test()
         {
             //
             // TODO: ajoutez ici la logique du constructeur
@@ -60,31 +60,27 @@ namespace Amethyst_UnitTest.Math
         #endregion
 
         [TestMethod]
-        public void TestClamp()
+        public void TestRotation()
         {
-            Assert.AreEqual(1, Helper.Clamp(1, 0.5f, 1.5f));
-            Assert.AreEqual(0.7f, Helper.Clamp(0.7f, 0.5f, 1.5f));
-            Assert.AreEqual(0.5f, Helper.Clamp(0.2f, 0.5f, 1.5f));
-            Assert.AreEqual(1.5f, Helper.Clamp(2, 0.5f, 1.5f));
+            Vector2 vectorX2Y0 = new Vector2(2, 0);
+            Matrix4 matRotZ90 = Matrix4.RotationZ(90);
+
+            Vector2 vectorX0Y2 = matRotZ90.Transform(vectorX2Y0);
+            TestContext.WriteLine("vectorX0Y2 : " + vectorX0Y2);
+            Assert.IsTrue((new Vector2(0, 2)) == vectorX0Y2);
+            Assert.IsFalse((new Vector2(0.001f, 2)) == vectorX0Y2);
         }
 
         [TestMethod]
-        public void TestSwap()
+        public void TestTranslation()
         {
-            int a = 29;
-            int b = 13;
+            Vector2 vectorX2Y0 = new Vector2(2, 0);
+            Matrix4 matTransX2Y6 = Matrix4.Translation(2, 6, 0);
 
-            Helper.Swap<int>(ref a, ref b);
-            Assert.AreEqual(13, a);
-            Assert.AreEqual(29, b);
-
-            Helper.Swap<int>(ref a, ref b);
-            Assert.AreEqual(29, a);
-            Assert.AreEqual(13, b);
-
-            Helper.Swap<int>(ref a, ref b);
-            Assert.AreEqual(13, a);
-            Assert.AreEqual(29, b);
+            Vector2 vectorX4Y6 = matTransX2Y6.Transform(vectorX2Y0);
+            TestContext.WriteLine("vectorX4Y6 : " + vectorX4Y6);
+            Assert.IsTrue((new Vector2(4, 6)) == vectorX4Y6);
+            Assert.IsFalse((new Vector2(4.001f, 6)) == vectorX4Y6);
         }
     }
 }

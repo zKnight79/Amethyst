@@ -63,6 +63,16 @@ namespace S02_BouncingBall {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BEACH_800x600 {
+            get {
+                object obj = ResourceManager.GetObject("BEACH_800x600", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap TOYBALL {
             get {
                 object obj = ResourceManager.GetObject("TOYBALL", resourceCulture);

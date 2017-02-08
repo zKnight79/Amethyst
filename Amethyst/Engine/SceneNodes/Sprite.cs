@@ -1,4 +1,5 @@
-﻿using Amethyst.Math;
+﻿using Amethyst.Graphics;
+using Amethyst.Math;
 
 namespace Amethyst.Engine.SceneNodes
 {
@@ -11,6 +12,9 @@ namespace Amethyst.Engine.SceneNodes
         /// Creates an instance of Sprite
         /// </summary>
         /// <param name="box">The Box where to render the Sprite</param>
-        public Sprite(Box box) : base(box) { }
+        public Sprite(Box box, Texture texture) : base(box)
+        {
+            Texture = texture;
+        }
     }
 }
