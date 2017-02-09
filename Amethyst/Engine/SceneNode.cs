@@ -218,6 +218,13 @@ namespace Amethyst.Engine
         public FlipEffect FlipEffect { get; set; } = FlipEffect.None;
 
         /// <summary>
+        /// Get or set the Z-Order of the Node<br />
+        /// In specific cases, when you don't call SceneNode.Render yourself,<br />
+        /// Using Z-Order helps you to control which Nodes are in front and which Nodes are behind.
+        /// </summary>
+        public int ZOrder { get; set; } = 0;
+
+        /// <summary>
         /// Constructor for SceneNode. The Box must be provided
         /// </summary>
         /// <param name="box">The Box of the Node</param>

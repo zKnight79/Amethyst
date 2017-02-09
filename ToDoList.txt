@@ -1,18 +1,14 @@
-- Add Sample 03 => Respond to keyboard inputs
-  - Add Keyboard input support
-- Add Sample 04 => Respond to mouse inputs
-  - Add Mouse input support
-- Add Sample 05 => Scene management
+- Update Sample 02 => Scene management
   - Add Scene class
   - Add SceneManager class
-- Add Sample 06 => Assets management
+- Update Sample 02 => Assets management
   - Add AssetManager class (Singleton)
-- Add Sample 07 => Music and Sound FX
+- Update Sample 02 => Music and Sound FX
   - Add Music and SFX support (trough CSCore ?)
-- Add Sample 08 => Animated sprites
+- Add Sample 03 => Animated sprites
   - Add Animated sprite support via sprite sheets
 
-Some day :
+Later :
 - Add TurnAroundAnimator
 - Add MoveStraightToAnimator
 - Add Sample ?? => Dynamic backgrounds
@@ -20,7 +16,6 @@ Some day :
     - Promote when stable
   - 2-sided / randomly-flipping / Tile Background
     - Promote when stable
-
-try porting this tutorial to Amethyst : https://gamedevelopment.tutsplus.com/tutorials/make-a-neon-vector-shooter-in-jmonkeyengine-the-basics--gamedev-11616
+- Try porting this tutorial to Amethyst : https://gamedevelopment.tutsplus.com/tutorials/make-a-neon-vector-shooter-in-jmonkeyengine-the-basics--gamedev-11616
 
 More to come ...

@@ -1,5 +1,6 @@
 ﻿using Amethyst.Graphics;
 using Amethyst.Graphics.OpenGL;
+using Amethyst.Input;
 using Amethyst.Math;
 using System;
 using System.Runtime.InteropServices;
@@ -61,6 +62,28 @@ namespace Amethyst.Engine
         /// Get or set the system font used by the Game
         /// </summary>
         public Font SystemFont { get; set; } = null;
+        /// <summary>
+        /// Get the Keyboard associated to the Game window
+        /// </summary>
+        public Keyboard Keyboard { get; private set; } = null;
+        /// <summary>
+        /// Get the Mouse associated to the Game window
+        /// </summary>
+        public Mouse Mouse { get; private set; }
+
+        /// <summary>
+        /// Enable or disable Vertical synchronization
+        /// </summary>
+        protected bool VSync
+        {
+            get { return m_VSync; }
+            set
+            {
+                m_VSync = value;
+                WGL.SwapInterval(m_VSync ? 1 : 0);
+            }
+        }
+        private bool m_VSync = false; // Because SwapInterval is at 0 by default
 
         /// <summary>
         /// Dispose all resources used by the Game
@@ -197,10 +220,82 @@ namespace Amethyst.Engine
             SystemFont = Font.FromXMLSrc(Fonts.SYSTEM_24, new Texture(Fonts.SYSTEM_24_TEX, System.Drawing.Color.Magenta));
             #endregion
 
-            OnResize();
-            OnInit();
+            #region KEYBOARD
+            Keyboard = new Keyboard(Form);
+            Keyboard.KeyDown += (Input.Keys key, Input.Keys modifiers) =>
+            {
+                // Placeholder for sending input to scene
+            };
+            Keyboard.KeyUp += (Input.Keys key, Input.Keys modifiers) =>
+            {
+                // Placeholder for sending input to scene
+            };
+            #endregion
 
-            return true;
+            #region MOUSE
+            Mouse = new Mouse(Form);
+            Mouse.ButtonDown += (MouseState mouseState) =>
+            {
+                // Placeholder for sending input to scene
+            };
+            Mouse.ButtonUp += (MouseState mouseState) =>
+            {
+                // Placeholder for sending input to scene
+            };
+            Mouse.LeftClick += (MouseState mouseState) =>
+            {
+                // Placeholder for sending input to scene
+            };
+            Mouse.LeftDoubleClick += (MouseState mouseState) =>
+            {
+                // Placeholder for sending input to scene
+            };
+            Mouse.MiddleClick += (MouseState mouseState) =>
+            {
+                // Placeholder for sending input to scene
+            };
+            Mouse.MiddleDoubleClick += (MouseState mouseState) =>
+            {
+                // Placeholder for sending input to scene
+            };
+            Mouse.Move += (MouseState mouseState) =>
+            {
+                // Placeholder for sending input to scene
+            };
+            Mouse.RightClick += (MouseState mouseState) =>
+            {
+                // Placeholder for sending input to scene
+            };
+            Mouse.RightDoubleClick += (MouseState mouseState) =>
+            {
+                // Placeholder for sending input to scene
+            };
+            Mouse.Wheel += (MouseState mouseState) =>
+            {
+                // Placeholder for sending input to scene
+            };
+            Mouse.XButton1Click += (MouseState mouseState) =>
+            {
+                // Placeholder for sending input to scene
+            };
+            Mouse.XButton1DoubleClick += (MouseState mouseState) =>
+            {
+                // Placeholder for sending input to scene
+            };
+            Mouse.XButton2Click += (MouseState mouseState) =>
+            {
+                // Placeholder for sending input to scene
+            };
+            Mouse.XButton2DoubleClick += (MouseState mouseState) =>
+            {
+                // Placeholder for sending input to scene
+            };
+            #endregion
+
+            VSync = DisplaySettings.EnableVSync;
+
+            OnResize();
+            return OnInit();
         }
 
         /// <summary>
@@ -236,7 +331,8 @@ namespace Amethyst.Engine
         /// Hook method called by Run(), just before entering the Game loop<br />
         /// Use it to load game resources, or override some Amethyst presets features
         /// </summary>
-        protected virtual void OnInit() { }
+        /// <returns>Default return true. Return false only if something happened that makes the game unable to run</returns>
+        protected virtual bool OnInit() { return true; }
 
         private void Update()
         {

@@ -48,6 +48,11 @@ namespace Amethyst.Engine
         /// </summary>
         public bool EnableResizing { get; set; } = false;
         /// <summary>
+        /// Get or set if Vertical Synchronization is On or Off (Default : true)
+        /// </summary>
+        public bool EnableVSync { get; set; } = true;
+
+        /// <summary>
         /// Returns a string that describes the DisplaySettings
         /// </summary>
         /// <returns>A well formatted string</returns>
@@ -62,7 +67,8 @@ namespace Amethyst.Engine
     - DepthBits : {4}
     - StencilBits : {5}
     - AccumBits : {6}
-    - MSAA : {7}",
+    - MSAA : {7}
+    - VSync : {8}",
                 Width,
                 Height,
                 Fullscreen,
@@ -70,7 +76,8 @@ namespace Amethyst.Engine
                 DepthBits,
                 StencilBits,
                 AccumBits,
-                MSAA
+                MSAA,
+                EnableVSync
             );
         }
     }

@@ -2,7 +2,9 @@
 using Amethyst.Engine.Animators;
 using Amethyst.Engine.SceneNodes;
 using Amethyst.Graphics;
+using Amethyst.Input;
 using Amethyst.Math;
+using System;
 
 namespace S02_BouncingBall
 {
@@ -16,58 +18,89 @@ namespace S02_BouncingBall
             }
         }
 
-        Texture beachTexture;
         Texture ballTexture;
-        Sprite backroundSprite;
         Sprite ballSprite;
         MoveStraightAnimator ballAnimator;
+        int ballClickCounter;
 
-        protected override void OnInit()
+        protected override bool OnInit()
         {
+            Random rnd = new Random();
+
             BackgroundColor = Color4.Colors.SandyBrown;
 
             ballTexture = new Texture(Textures.TOYBALL, TextureFiltering.Bilinear);
-            beachTexture = new Texture(Textures.BEACH_800x600, TextureFiltering.Bilinear);
 
-            backroundSprite = new Sprite(ViewPort, beachTexture);
             ballSprite = new Sprite(new Box(0, 0, 100, 100), ballTexture)
             {
                 BoxCenter = ViewPort.Center
             };
             ballSprite.AddAnimator(new RotateAnimator(360));
-            ballSprite.AddAnimator(ballAnimator = new MoveStraightAnimator(-40, 500));
+            ballSprite.AddAnimator(ballAnimator = new MoveStraightAnimator(rnd.Next(20,71), 500));
+
+            Mouse.LeftClick += (MouseState) =>
+            {
+                if (ballSprite.Box.Contains(MouseState.X, MouseState.Y))
+                {
+                    ++ballClickCounter;
+                } else
+                {
+                    --ballClickCounter;
+                }
+            };
+
+            Keyboard.KeyDown += (key, modifiers) => { if (key == Keys.Tab) { VSync = !VSync; } };
+
+            return base.OnInit();
         }
+
         protected override void OnRelease()
         {
             ballTexture.Dispose();
-            beachTexture.Dispose();
         }
 
         protected override void OnUpdate(float elapsedTime)
         {
             ballSprite.Update(elapsedTime);
 
-            // Apply x-axis speed
+            #region Apply x-axis speed
             if ((ballAnimator.SpeedX < 0 && ballSprite.BoxLeft <= ViewPort.Left)
                 ||
                (ballAnimator.SpeedX > 0 && ballSprite.BoxRight >= ViewPort.Right))
             {
                 ballAnimator.SpeedX = -ballAnimator.SpeedX;
             }
+            #endregion
 
-            // Apply y-axis speed
+            #region Apply y-axis speed
             if ((ballAnimator.SpeedY < 0 && ballSprite.BoxTop <= ViewPort.Top)
                 ||
                (ballAnimator.SpeedY > 0 && ballSprite.BoxBottom >= ViewPort.Bottom))
             {
                 ballAnimator.SpeedY = -ballAnimator.SpeedY;
             }
+            #endregion
+
+            #region Change opacity of the ball with Up and Down arrows
+            if (Keyboard[Keys.Up])
+            {
+                ballSprite.ColorAlpha += 0.5f * elapsedTime;
+            }
+            else if (Keyboard[Keys.Down])
+            {
+                ballSprite.ColorAlpha -= 0.5f * elapsedTime;
+            }
+            #endregion
         }
         protected override void OnRender(SpriteBatch spriteBatch)
         {
-            backroundSprite.Render(spriteBatch);
             ballSprite.Render(spriteBatch);
-            spriteBatch.DrawText("FPS : " + GameTime.FramesPerSecond, SystemFont, TextRenderMode.Inline, ViewPort, Color4.Colors.DarkRed);
+            spriteBatch.DrawText(string.Format("FPS : {0}\nScore : {1}", GameTime.FramesPerSecond, ballClickCounter),
+                SystemFont,
+                TextRenderMode.Inline,
+                ViewPort,
+                BackgroundColor.Invert()
+            );
         }
     }
 }
