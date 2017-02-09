@@ -35,7 +35,7 @@ namespace S02_BouncingBall
                 BoxCenter = ViewPort.Center
             };
             ballSprite.AddAnimator(new RotateAnimator(360));
-            ballSprite.AddAnimator(ballAnimator = new MoveStraightAnimator(new Point(300, 240)));
+            ballSprite.AddAnimator(ballAnimator = new MoveStraightAnimator(-40, 500));
         }
         protected override void OnRelease()
         {

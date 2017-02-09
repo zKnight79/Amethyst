@@ -8,7 +8,7 @@
         /// <summary>
         /// Value to use for an infinite animation
         /// </summary>
-        public const float INFINITE_TTL = -1;
+        public const float INFINITE_TTL = -99999f;
 
         /// <summary>
         /// Get the "Time To Live" of the animator (in seconds)<br />
@@ -53,8 +53,8 @@
         /// UpdateNode is called every time the animator is updating
         /// </summary>
         /// <param name="node">The node to update</param>
-        /// <param name="elapsedTime">The time elapsed since last call</param>
-        protected abstract void UpdateNode(SceneNode node, float elapsedTime);
+        /// <param name="animDuration">The animation duration</param>
+        protected abstract void UpdateNode(SceneNode node, float animDuration);
         /// <summary>
         /// Update is called every time the node needs to be updated by the animator
         /// </summary>
@@ -62,8 +62,8 @@
         /// <param name="elapsedTime">The time elapsed since last call</param>
         public void Update(SceneNode node, float elapsedTime)
         {
-            float animTime = UpdateTTL(elapsedTime);
-            UpdateNode(node, animTime);
+            float animDuration = UpdateTTL(elapsedTime);
+            UpdateNode(node, animDuration);
         }
 
         /// <summary>

@@ -1,5 +1,3 @@
-- Modify Sample 02
-  - Add MoveStraightAnimator
 - Add Sample 03 => Respond to keyboard inputs
   - Add Keyboard input support
 - Add Sample 04 => Respond to mouse inputs

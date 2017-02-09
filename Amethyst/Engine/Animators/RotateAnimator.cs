@@ -21,6 +21,7 @@
         }
 
         /// <summary>
+        /// Start method is called by the node at attaching time<br />
         /// Currently does nothing for this kind of animator
         /// </summary>
         /// <param name="node">The node who starts the animation</param>
@@ -33,10 +34,10 @@
         /// Update the angle of the node
         /// </summary>
         /// <param name="node">The node who calls the animator for an update</param>
-        /// <param name="elapsedTime">The time elapsed since last call</param>
-        protected override void UpdateNode(SceneNode node, float elapsedTime)
+        /// <param name="animDuration">The animation duration</param>
+        protected override void UpdateNode(SceneNode node, float animDuration)
         {
-            node.Angle += RotationSpeed * elapsedTime;
+            node.Angle += RotationSpeed * animDuration;
         }
     }
 }
