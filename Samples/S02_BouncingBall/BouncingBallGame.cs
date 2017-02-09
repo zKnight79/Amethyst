@@ -20,6 +20,7 @@ namespace S02_BouncingBall
         Texture ballTexture;
         Sprite backroundSprite;
         Sprite ballSprite;
+        MoveStraightAnimator ballAnimator;
 
         protected override void OnInit()
         {
@@ -34,6 +35,7 @@ namespace S02_BouncingBall
                 BoxCenter = ViewPort.Center
             };
             ballSprite.AddAnimator(new RotateAnimator(360));
+            ballSprite.AddAnimator(ballAnimator = new MoveStraightAnimator(new Point(300, 240)));
         }
         protected override void OnRelease()
         {
@@ -41,28 +43,24 @@ namespace S02_BouncingBall
             beachTexture.Dispose();
         }
 
-        private float xAxisSpeed = 300;    // (pixels per second)
-        private float yAxisSpeed = 240;    // (pixels per second)
         protected override void OnUpdate(float elapsedTime)
         {
             ballSprite.Update(elapsedTime);
 
             // Apply x-axis speed
-            ballSprite.BoxX += elapsedTime * xAxisSpeed;
-            if((xAxisSpeed<0 && ballSprite.BoxLeft<=ViewPort.Left)
+            if ((ballAnimator.SpeedX < 0 && ballSprite.BoxLeft <= ViewPort.Left)
                 ||
-               (xAxisSpeed > 0 && ballSprite.BoxRight >= ViewPort.Right))
+               (ballAnimator.SpeedX > 0 && ballSprite.BoxRight >= ViewPort.Right))
             {
-                xAxisSpeed = -xAxisSpeed;
+                ballAnimator.SpeedX = -ballAnimator.SpeedX;
             }
 
             // Apply y-axis speed
-            ballSprite.BoxY += elapsedTime * yAxisSpeed;
-            if ((yAxisSpeed < 0 && ballSprite.BoxTop <= ViewPort.Top)
+            if ((ballAnimator.SpeedY < 0 && ballSprite.BoxTop <= ViewPort.Top)
                 ||
-               (yAxisSpeed > 0 && ballSprite.BoxBottom >= ViewPort.Bottom))
+               (ballAnimator.SpeedY > 0 && ballSprite.BoxBottom >= ViewPort.Bottom))
             {
-                yAxisSpeed = -yAxisSpeed;
+                ballAnimator.SpeedY = -ballAnimator.SpeedY;
             }
         }
         protected override void OnRender(SpriteBatch spriteBatch)

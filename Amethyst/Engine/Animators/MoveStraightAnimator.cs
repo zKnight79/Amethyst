@@ -9,7 +9,11 @@ namespace Amethyst.Engine.Animators
     public class MoveStraightAnimator : Animator
     {
         private Point m_Speed;
-        public Point Speed { get; set; }
+        public Point Speed
+        {
+            get { return m_Speed; }
+            set { m_Speed = value; }
+        }
         public float SpeedX
         {
             get { return m_Speed.X; }
