@@ -25,16 +25,23 @@
             TTL = ttl;
         }
 
-        private void UpdateTTL(float elapsedTime)
+        private float UpdateTTL(float elapsedTime)
         {
+            float animTime = System.Math.Min((TTL > 0) ? TTL : float.MaxValue, elapsedTime);
             if (TTL != INFINITE_TTL)
             {
                 TTL -= elapsedTime;
                 if (TTL <= 0)
                 {
+                    TTL = 0;
                     Finish();
                 }
             }
+            return animTime;
+        }
+        private void Finish()
+        {
+            Finished?.Invoke(this);
         }
 
         /// <summary>
@@ -55,12 +62,8 @@
         /// <param name="elapsedTime">The time elapsed since last call</param>
         public void Update(SceneNode node, float elapsedTime)
         {
-            UpdateNode(node, elapsedTime);
-            UpdateTTL(elapsedTime);
-        }
-        private void Finish()
-        {
-            Finished?.Invoke(this);
+            float animTime = UpdateTTL(elapsedTime);
+            UpdateNode(node, animTime);
         }
 
         /// <summary>

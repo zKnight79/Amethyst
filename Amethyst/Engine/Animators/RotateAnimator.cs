@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Amethyst.Engine.Animators
+﻿namespace Amethyst.Engine.Animators
 {
     /// <summary>
     /// An animator to make a node to spin around

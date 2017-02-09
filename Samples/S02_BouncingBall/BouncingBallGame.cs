@@ -33,7 +33,7 @@ namespace S02_BouncingBall
             {
                 BoxCenter = ViewPort.Center
             };
-            ballSprite.AddAnimator(new RotateAnimator(360, 10));
+            ballSprite.AddAnimator(new RotateAnimator(360));
         }
         protected override void OnRelease()
         {

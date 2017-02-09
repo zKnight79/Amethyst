@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine\Animator.cs" />
+    <Compile Include="Engine\Animators\MoveStraightAnimator.cs" />
     <Compile Include="Engine\Animators\RotateAnimator.cs" />
     <Compile Include="Engine\Camera.cs" />
     <Compile Include="Engine\DisplaySettings.cs" />
