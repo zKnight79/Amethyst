@@ -22,7 +22,7 @@ namespace Amethyst.Engine
         /// <summary>
         /// Remove all nodes from the Scene
         /// </summary>
-        public void Clear()
+        public void ClearNodes()
         {
             m_SceneNodes.Clear();
         }
@@ -30,7 +30,7 @@ namespace Amethyst.Engine
         /// Add a Node to the Scene
         /// </summary>
         /// <param name="SceneNode">The Node to add</param>
-        public void Add(SceneNode SceneNode)
+        public void AddNode(SceneNode SceneNode)
         {
             m_SceneNodes.Add(SceneNode);
         }
@@ -38,7 +38,7 @@ namespace Amethyst.Engine
         /// Remove a Node from the Scene
         /// </summary>
         /// <param name="SceneNode">The Node to remove</param>
-        public void Remove(SceneNode SceneNode)
+        public void RemoveNode(SceneNode SceneNode)
         {
             m_SceneNodes.Remove(SceneNode);
         }
@@ -53,6 +53,7 @@ namespace Amethyst.Engine
             {
                 SceneNode.Render(spriteBatch);
             }
+            OnRender(spriteBatch);
         }
         /// <summary>
         /// Update all the Nodes of the Scene
@@ -64,6 +65,7 @@ namespace Amethyst.Engine
             {
                 SceneNode.Update(elapsedTime);
             }
+            OnUpdate(elapsedTime);
         }
 
         /// <summary>
@@ -82,6 +84,16 @@ namespace Amethyst.Engine
         /// Hook method called when the scene stopped to be the current scene of a Scene manager
         /// </summary>
         public virtual void OnLoseFocus() { }
+        /// <summary>
+        /// Hook method called by Render(), for specific rendering tasks
+        /// </summary>
+        /// <param name="spriteBatch">The SpriteBatch used for rendering</param>
+        public virtual void OnRender(SpriteBatch spriteBatch) { }
+        /// <summary>
+        /// Hook method called by Update(), for specific updating tasks
+        /// </summary>
+        /// <param name="elapsedTime"></param>
+        public virtual void OnUpdate(float elapsedTime) { }
 
         /// <summary>
         /// Hook method called when a Keyboard key is pressed

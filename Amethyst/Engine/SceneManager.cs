@@ -11,6 +11,11 @@ namespace Amethyst.Engine
         Stack<Scene> m_Scenes = new Stack<Scene>();
 
         /// <summary>
+        /// Get the Game bound to this SceneManager
+        /// </summary>
+        public Game Game { get; private set; }
+
+        /// <summary>
         /// Get the current Scene
         /// </summary>
         public Scene CurrentScene => ((m_Scenes.Count < 1) ? null : m_Scenes.Peek());
@@ -18,6 +23,15 @@ namespace Amethyst.Engine
         /// Get the scene count
         /// </summary>
         public int SceneCount => m_Scenes.Count;
+
+        /// <summary>
+        /// Creates a new instance of SceneManager
+        /// </summary>
+        /// <param name="game">Game instance to bind to the SceneManager, null to bind no Game (null by default)</param>
+        public SceneManager(Game game = null)
+        {
+            Game = game;
+        }
 
         /// <summary>
         /// Push a scene in the scene manager<br />
@@ -28,7 +42,7 @@ namespace Amethyst.Engine
         /// - new current scene's OnGetFocus method
         /// </summary>
         /// <param name="scene">The Scene to push</param>
-        public void Push(Scene scene)
+        public void PushScene(Scene scene)
         {
             CurrentScene?.OnLoseFocus();
             m_Scenes.Push(scene);
@@ -44,7 +58,7 @@ namespace Amethyst.Engine
         /// - new current scene's OnGetFocus method
         /// </summary>
         /// <returns>The popped scene or null if scene manager is empty</returns>
-        public Scene Pop()
+        public Scene PopScene()
         {
             if(m_Scenes.Count<1)
             {
@@ -66,7 +80,7 @@ namespace Amethyst.Engine
         /// </summary>
         public void Clear()
         {
-            while (Pop() != null) ;
+            while (PopScene() != null) ;
         }
 
         /// <summary>

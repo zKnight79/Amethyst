@@ -88,7 +88,7 @@ namespace Amethyst.Engine
         /// <summary>
         /// Get or set the SceneManager of the Game
         /// </summary>
-        public SceneManager SceneManager { get; set; } = new SceneManager();
+        public SceneManager SceneManager { get; set; }
 
         /// <summary>
         /// Dispose all resources used by the Game
@@ -223,6 +223,7 @@ namespace Amethyst.Engine
             Program2D = GLSLProgram.CreateBuiltInProgram();
             SpriteBatch = new SpriteBatch();
             SystemFont = Font.FromXMLSrc(Fonts.SYSTEM_24, new Texture(Fonts.SYSTEM_24_TEX, System.Drawing.Color.Magenta));
+            SceneManager = new SceneManager(this);
             #endregion
 
             #region KEYBOARD
