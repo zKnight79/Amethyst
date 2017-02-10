@@ -84,6 +84,11 @@ namespace Amethyst.Engine
             }
         }
         private bool m_VSync = false; // Because SwapInterval is at 0 by default
+        
+        /// <summary>
+        /// Get or set the SceneManager of the Game
+        /// </summary>
+        public SceneManager SceneManager { get; set; } = new SceneManager();
 
         /// <summary>
         /// Dispose all resources used by the Game
@@ -224,11 +229,11 @@ namespace Amethyst.Engine
             Keyboard = new Keyboard(Form);
             Keyboard.KeyDown += (Input.Keys key, Input.Keys modifiers) =>
             {
-                // Placeholder for sending input to scene
+                SceneManager.OnKeyDown(key, modifiers);
             };
             Keyboard.KeyUp += (Input.Keys key, Input.Keys modifiers) =>
             {
-                // Placeholder for sending input to scene
+                SceneManager.OnKeyUp(key, modifiers);
             };
             #endregion
 
@@ -236,59 +241,59 @@ namespace Amethyst.Engine
             Mouse = new Mouse(Form);
             Mouse.ButtonDown += (MouseState mouseState) =>
             {
-                // Placeholder for sending input to scene
+                SceneManager.OnMouseButtonDown(mouseState);
             };
             Mouse.ButtonUp += (MouseState mouseState) =>
             {
-                // Placeholder for sending input to scene
+                SceneManager.OnMouseButtonUp(mouseState);
             };
             Mouse.LeftClick += (MouseState mouseState) =>
             {
-                // Placeholder for sending input to scene
+                SceneManager.OnMouseLeftClick(mouseState);
             };
             Mouse.LeftDoubleClick += (MouseState mouseState) =>
             {
-                // Placeholder for sending input to scene
+                SceneManager.OnMouseLeftDoubleClick(mouseState);
             };
             Mouse.MiddleClick += (MouseState mouseState) =>
             {
-                // Placeholder for sending input to scene
+                SceneManager.OnMouseMiddleClick(mouseState);
             };
             Mouse.MiddleDoubleClick += (MouseState mouseState) =>
             {
-                // Placeholder for sending input to scene
+                SceneManager.OnMouseMiddleDoubleClick(mouseState);
             };
             Mouse.Move += (MouseState mouseState) =>
             {
-                // Placeholder for sending input to scene
+                SceneManager.OnMouseMove(mouseState);
             };
             Mouse.RightClick += (MouseState mouseState) =>
             {
-                // Placeholder for sending input to scene
+                SceneManager.OnMouseRightClick(mouseState);
             };
             Mouse.RightDoubleClick += (MouseState mouseState) =>
             {
-                // Placeholder for sending input to scene
+                SceneManager.OnMouseRightDoubleClick(mouseState);
             };
             Mouse.Wheel += (MouseState mouseState) =>
             {
-                // Placeholder for sending input to scene
+                SceneManager.OnMouseWheel(mouseState);
             };
             Mouse.XButton1Click += (MouseState mouseState) =>
             {
-                // Placeholder for sending input to scene
+                SceneManager.OnMouseXButton1Click(mouseState);
             };
             Mouse.XButton1DoubleClick += (MouseState mouseState) =>
             {
-                // Placeholder for sending input to scene
+                SceneManager.OnMouseXButton1DoubleClick(mouseState);
             };
             Mouse.XButton2Click += (MouseState mouseState) =>
             {
-                // Placeholder for sending input to scene
+                SceneManager.OnMouseXButton2Click(mouseState);
             };
             Mouse.XButton2DoubleClick += (MouseState mouseState) =>
             {
-                // Placeholder for sending input to scene
+                SceneManager.OnMouseXButton2DoubleClick(mouseState);
             };
             #endregion
 
@@ -337,6 +342,7 @@ namespace Amethyst.Engine
         private void Update()
         {
             GameTime.Update();
+            SceneManager.CurrentScene?.Update(GameTime.ElapsedTime);
             OnUpdate(GameTime.ElapsedTime);
         }
         /// <summary>
@@ -349,6 +355,7 @@ namespace Amethyst.Engine
         {
             GL.Clear(ClearMask.GL_COLOR_BUFFER_BIT);
             SpriteBatch.Begin(Program2D);
+            SceneManager.CurrentScene?.Render(SpriteBatch);
             OnRender(SpriteBatch);
             SpriteBatch.End();
             GLContext.SwapBuffers();

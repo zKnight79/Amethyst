@@ -50,6 +50,8 @@
     <Compile Include="Engine\FlipEffect.cs" />
     <Compile Include="Engine\Game.cs" />
     <Compile Include="Engine\GameTime.cs" />
+    <Compile Include="Engine\Scene.cs" />
+    <Compile Include="Engine\SceneManager.cs" />
     <Compile Include="Engine\SceneNode.cs" />
     <Compile Include="Engine\SceneNodes\Sprite.cs" />
     <Compile Include="Engine\SpriteBatch.cs" />

@@ -1,12 +1,18 @@
 - Update Sample 02 => Scene management
-  - Add Scene class
-  - Add SceneManager class
+  -x Add Scene class
+  -x Add SceneManager class
+  - Use scene management in the sample
+
 - Update Sample 02 => Assets management
   - Add AssetManager class (Singleton)
 - Update Sample 02 => Music and Sound FX
   - Add Music and SFX support (trough CSCore ?)
+
+- Write readme content
+
 - Add Sample 03 => Animated sprites
   - Add Animated sprite support via sprite sheets
+
 
 Later :
 - Add TurnAroundAnimator
