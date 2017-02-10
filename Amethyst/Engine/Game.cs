@@ -59,10 +59,6 @@ namespace Amethyst.Engine
         /// </summary>
         public SpriteBatch SpriteBatch { get; set; } = null;
         /// <summary>
-        /// Get or set the system font used by the Game
-        /// </summary>
-        public Font SystemFont { get; set; } = null;
-        /// <summary>
         /// Get the Keyboard associated to the Game window
         /// </summary>
         public Keyboard Keyboard { get; private set; } = null;
@@ -222,7 +218,6 @@ namespace Amethyst.Engine
             BackgroundColor = Color4.Colors.Amethyst;
             Program2D = GLSLProgram.CreateBuiltInProgram();
             SpriteBatch = new SpriteBatch();
-            SystemFont = Font.FromXMLSrc(Fonts.SYSTEM_24, new Texture(Fonts.SYSTEM_24_TEX, System.Drawing.Color.Magenta));
             SceneManager = new SceneManager(this);
             #endregion
 

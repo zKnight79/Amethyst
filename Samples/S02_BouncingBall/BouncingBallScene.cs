@@ -14,6 +14,7 @@ namespace S02_BouncingBall
     class BouncingBallScene : Scene
     {
         Game gameInstance;
+        Font scoreFont;
         Texture ballTexture;
         Sprite ballSprite;
         MoveStraightAnimator ballAnimator;
@@ -24,6 +25,7 @@ namespace S02_BouncingBall
         public override void OnLoad()
         {
             gameInstance = SceneManager.Game;
+            scoreFont = AssetManager.Instance.GetFont(AssetManager.BuiltinFonts.SYSTEM_24);
             scoreColor = gameInstance.BackgroundColor.Invert();
 
             ballTexture = new Texture(Textures.TOYBALL, TextureFiltering.Bilinear);
@@ -80,7 +82,7 @@ namespace S02_BouncingBall
         public override void OnRender(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawText(string.Format("Score : {0}", ballClickCounter),
-                gameInstance.SystemFont,
+                scoreFont,
                 TextRenderMode.Inline,
                 gameInstance.ViewPort,
                 scoreColor,

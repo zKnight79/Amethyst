@@ -10,9 +10,11 @@ namespace S02_BouncingBall
 {
     class BouncingBallGame : Game
     {
+        Font fpsFont;
         protected override bool OnInit()
         {
             BackgroundColor = Color4.Colors.SandyBrown;
+            fpsFont = AssetManager.Instance.GetFont(AssetManager.BuiltinFonts.SYSTEM_24);
 
             Keyboard.KeyDown += (key, modifiers) =>
             {
@@ -30,7 +32,7 @@ namespace S02_BouncingBall
         protected override void OnRender(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawText(string.Format("FPS : {0}", GameTime.FramesPerSecond),
-                SystemFont,
+                fpsFont,
                 TextRenderMode.Inline,
                 ViewPort,
                 BackgroundColor.Invert()

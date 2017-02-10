@@ -45,6 +45,7 @@
     <Compile Include="Engine\Animator.cs" />
     <Compile Include="Engine\Animators\MoveStraightAnimator.cs" />
     <Compile Include="Engine\Animators\RotateAnimator.cs" />
+    <Compile Include="Engine\AssetManager.cs" />
     <Compile Include="Engine\Camera.cs" />
     <Compile Include="Engine\DisplaySettings.cs" />
     <Compile Include="Engine\FlipEffect.cs" />

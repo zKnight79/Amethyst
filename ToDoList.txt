@@ -4,7 +4,9 @@
   -x Use scene management in the sample
 
 - Update Sample 02 => Assets management
-  - Add AssetManager class (Singleton)
+  -x Add AssetManager class (Singleton)
+  - In Game class, add a way to load game assets
+    with a customizable loading screen
 
 - Update Sample 02 => Adding a Menu
   - Add UI Nodes
