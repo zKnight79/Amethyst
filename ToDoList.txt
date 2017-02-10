@@ -1,11 +1,14 @@
-- Update Sample 02 => Scene management
+-x Update Sample 02 => Scene management
   -x Add Scene class
   -x Add SceneManager class
   -x Use scene management in the sample
-  - Add a menu scene
 
 - Update Sample 02 => Assets management
   - Add AssetManager class (Singleton)
+
+- Update Sample 02 => Adding a Menu
+  - Add UI Nodes
+  - Add a menu scene
 
 - Update Sample 02 => Music and Sound FX
   - Add Music and SFX support (trough CSCore ?)
