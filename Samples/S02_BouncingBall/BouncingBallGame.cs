@@ -10,6 +10,8 @@ namespace S02_BouncingBall
 {
     class BouncingBallGame : Game
     {
+        public const string TEXTURE_TOYBALL = "TOYBALL";
+
         Font fpsFont;
         protected override bool OnInit()
         {
@@ -23,6 +25,8 @@ namespace S02_BouncingBall
                     VSync = !VSync;
                 }
             };
+
+            AssetManager.Instance.AddTexture(TEXTURE_TOYBALL, new Texture(Textures.TOYBALL, TextureFiltering.Bilinear));
 
             SceneManager.PushScene(new BouncingBallScene());
 

@@ -111,11 +111,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Graphics\OpenGL\glcorearb.h" />
+    <None Include="Resources\Fonts\ARIAL_BLACK_48.fnt" />
     <None Include="Resources\Fonts\SYSTEM_24.fnt" />
     <None Include="Resources\Shaders\FragmentShader2D.glsl" />
     <None Include="Resources\Shaders\VertexShader2D.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Fonts\ARIAL_BLACK_48.png" />
     <Content Include="Resources\Fonts\SYSTEM_24.png" />
     <Content Include="Resources\Textures\Blank.png" />
   </ItemGroup>

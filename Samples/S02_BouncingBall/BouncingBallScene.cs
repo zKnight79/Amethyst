@@ -15,7 +15,6 @@ namespace S02_BouncingBall
     {
         Game gameInstance;
         Font scoreFont;
-        Texture ballTexture;
         Sprite ballSprite;
         MoveStraightAnimator ballAnimator;
         int ballClickCounter;
@@ -25,16 +24,11 @@ namespace S02_BouncingBall
         public override void OnLoad()
         {
             gameInstance = SceneManager.Game;
-            scoreFont = AssetManager.Instance.GetFont(AssetManager.BuiltinFonts.SYSTEM_24);
+            scoreFont = AssetManager.Instance.GetFont(AssetManager.BuiltinFonts.ARIAL_BLACK_48);
             scoreColor = gameInstance.BackgroundColor.Invert();
 
-            ballTexture = new Texture(Textures.TOYBALL, TextureFiltering.Bilinear);
-            ballSprite = new Sprite(new Box(0, 0, 100, 100), ballTexture);
+            ballSprite = new Sprite(new Box(0, 0, 100, 100), AssetManager.Instance.GetTexture(BouncingBallGame.TEXTURE_TOYBALL));
             AddNode(ballSprite);
-        }
-        public override void OnDispose()
-        {
-            ballTexture.Dispose();
         }
         public override void OnGetFocus()
         {

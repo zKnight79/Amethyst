@@ -14,6 +14,7 @@ namespace Amethyst.Engine
         public static class BuiltinFonts
         {
             public const string SYSTEM_24 = "SYSTEM_24";
+            public const string ARIAL_BLACK_48 = "ARIAL_BLACK_48";
         }
         
         /// <summary>
@@ -25,6 +26,7 @@ namespace Amethyst.Engine
         {
             // Load Built-in Fonts
             AddFont(BuiltinFonts.SYSTEM_24, Font.FromXMLSrc(Fonts.SYSTEM_24, new Texture(Fonts.SYSTEM_24_TEX, System.Drawing.Color.Magenta)));
+            AddFont(BuiltinFonts.ARIAL_BLACK_48, Font.FromXMLSrc(Fonts.ARIAL_BLACK_48, new Texture(Fonts.ARIAL_BLACK_48_TEX, System.Drawing.Color.Magenta)));
             // Load Built-in Textures
         }
 

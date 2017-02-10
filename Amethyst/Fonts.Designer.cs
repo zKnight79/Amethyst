@@ -63,6 +63,33 @@ namespace Amethyst {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à &lt;?xml version=&quot;1.0&quot;?&gt;
         ///&lt;font&gt;
+        ///  &lt;info face=&quot;Arial Black&quot; size=&quot;48&quot; bold=&quot;0&quot; italic=&quot;0&quot; charset=&quot;&quot; unicode=&quot;1&quot; stretchH=&quot;100&quot; smooth=&quot;1&quot; aa=&quot;1&quot; padding=&quot;0,0,0,0&quot; spacing=&quot;1,1&quot; outline=&quot;0&quot;/&gt;
+        ///  &lt;common lineHeight=&quot;48&quot; base=&quot;37&quot; scaleW=&quot;512&quot; scaleH=&quot;256&quot; pages=&quot;1&quot; packed=&quot;0&quot; alphaChnl=&quot;1&quot; redChnl=&quot;0&quot; greenChnl=&quot;0&quot; blueChnl=&quot;0&quot;/&gt;
+        ///  &lt;pages&gt;
+        ///    &lt;page id=&quot;0&quot; file=&quot;ARIAL_BLACK_48.png&quot; /&gt;
+        ///  &lt;/pages&gt;
+        ///  &lt;chars count=&quot;191&quot;&gt;
+        ///    &lt;char id=&quot;32&quot; x=&quot;508&quot; y=&quot;0&quot; width=&quot;3&quot; height=&quot;1&quot; xoffset=&quot;-1&quot; yoffset=&quot;47&quot; xadvance=&quot; [le reste de la chaîne a été tronqué]&quot;;.
+        /// </summary>
+        internal static string ARIAL_BLACK_48 {
+            get {
+                return ResourceManager.GetString("ARIAL_BLACK_48", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ARIAL_BLACK_48_TEX {
+            get {
+                object obj = ResourceManager.GetObject("ARIAL_BLACK_48_TEX", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à &lt;?xml version=&quot;1.0&quot;?&gt;
+        ///&lt;font&gt;
         ///  &lt;info face=&quot;System&quot; size=&quot;24&quot; bold=&quot;0&quot; italic=&quot;0&quot; charset=&quot;ANSI&quot; unicode=&quot;0&quot; stretchH=&quot;100&quot; smooth=&quot;1&quot; aa=&quot;1&quot; padding=&quot;0,0,0,0&quot; spacing=&quot;1,1&quot; outline=&quot;0&quot;/&gt;
         ///  &lt;common lineHeight=&quot;16&quot; base=&quot;13&quot; scaleW=&quot;256&quot; scaleH=&quot;256&quot; pages=&quot;1&quot; packed=&quot;0&quot; alphaChnl=&quot;1&quot; redChnl=&quot;0&quot; greenChnl=&quot;0&quot; blueChnl=&quot;0&quot;/&gt;
         ///  &lt;pages&gt;

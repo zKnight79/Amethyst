@@ -4,6 +4,8 @@ using Amethyst.Input;
 using Amethyst.Math;
 using System;
 using System.Runtime.InteropServices;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Amethyst.Engine
@@ -21,6 +23,14 @@ namespace Amethyst.Engine
         /// Get the Form used to display the Game
         /// </summary>
         public Form Form { get; private set; } = null;
+        /// <summary>
+        /// Get or set the Game Window Title
+        /// </summary>
+        public string FormTitle
+        {
+            get { return Form.Text; }
+            set { Form.Text = value; }
+        }
         /// <summary>
         /// Get the OpenGL Context of the Game
         /// </summary>
@@ -296,7 +306,7 @@ namespace Amethyst.Engine
             VSync = DisplaySettings.EnableVSync;
 
             OnResize();
-            return OnInit();
+            return Form.Created && OnInit();
         }
 
         /// <summary>
@@ -329,7 +339,7 @@ namespace Amethyst.Engine
         }
 
         /// <summary>
-        /// Hook method called by Run(), just before entering the Game loop<br />
+        /// Hook method called by Run(), just before loading assets<br />
         /// Use it to load game resources, or override some Amethyst presets features
         /// </summary>
         /// <returns>Default return true. Return false only if something happened that makes the game unable to run</returns>
