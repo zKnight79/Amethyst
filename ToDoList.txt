@@ -1,8 +1,3 @@
-- Update Sample 02 => Assets management
-  -x Add AssetManager class (Singleton)
-  - Add a way to load game assets
-    with a customizable loading screen
-
 - Update Sample 02 => Adding a Menu
   - Add UI Nodes
   - Add a menu scene

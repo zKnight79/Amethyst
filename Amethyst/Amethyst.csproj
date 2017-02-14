@@ -55,6 +55,7 @@
     <Compile Include="Engine\SceneManager.cs" />
     <Compile Include="Engine\SceneNode.cs" />
     <Compile Include="Engine\SceneNodes\Sprite.cs" />
+    <Compile Include="Engine\Scenes\AssetsLoadingScene.cs" />
     <Compile Include="Engine\SpriteBatch.cs" />
     <Compile Include="Engine\SpriteBatchQueueItem.cs" />
     <Compile Include="Engine\TextAlign.cs" />

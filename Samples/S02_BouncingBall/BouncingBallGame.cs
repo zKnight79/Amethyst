@@ -1,10 +1,6 @@
 ﻿using Amethyst.Engine;
-using Amethyst.Engine.Animators;
-using Amethyst.Engine.SceneNodes;
 using Amethyst.Graphics;
 using Amethyst.Input;
-using Amethyst.Math;
-using System;
 
 namespace S02_BouncingBall
 {
@@ -13,7 +9,17 @@ namespace S02_BouncingBall
         public const string TEXTURE_TOYBALL = "TOYBALL";
 
         Font fpsFont;
+
         protected override bool OnInit()
+        {
+            AssetsLoadingScene = new BBAssetsLoadingScene()
+            {
+                Game = this
+            };
+            return base.OnInit();
+        }
+
+        protected override void OnStart()
         {
             BackgroundColor = Color4.Colors.SandyBrown;
             fpsFont = AssetManager.Instance.GetFont(AssetManager.BuiltinFonts.SYSTEM_24);
@@ -26,11 +32,7 @@ namespace S02_BouncingBall
                 }
             };
 
-            AssetManager.Instance.AddTexture(TEXTURE_TOYBALL, new Texture(Textures.TOYBALL, TextureFiltering.Bilinear));
-
             SceneManager.PushScene(new BouncingBallScene());
-
-            return base.OnInit();
         }
 
         protected override void OnRender(SpriteBatch spriteBatch)

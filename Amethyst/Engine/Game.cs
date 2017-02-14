@@ -1,4 +1,5 @@
-﻿using Amethyst.Graphics;
+﻿using Amethyst.Engine.Scenes;
+using Amethyst.Graphics;
 using Amethyst.Graphics.OpenGL;
 using Amethyst.Input;
 using Amethyst.Math;
@@ -15,6 +16,7 @@ namespace Amethyst.Engine
     /// </summary>
     public class Game : IDisposable
     {
+        #region PROPERTIES
         /// <summary>
         /// Get or set the display settings for the Game
         /// </summary>
@@ -90,12 +92,20 @@ namespace Amethyst.Engine
             }
         }
         private bool m_VSync = false; // Because SwapInterval is at 0 by default
-        
+
         /// <summary>
         /// Get or set the SceneManager of the Game
         /// </summary>
         public SceneManager SceneManager { get; set; }
 
+        /// <summary>
+        /// Get or set the Asset loading Scene<br />
+        /// The Scene must be set before the call to the OnStart method
+        /// </summary>
+        public AssetsLoadingScene AssetsLoadingScene { get; set; } = null;
+        #endregion
+
+        #region IDisposable implementation
         /// <summary>
         /// Dispose all resources used by the Game
         /// </summary>
@@ -128,7 +138,9 @@ namespace Amethyst.Engine
                 Form = null;
             }
         }
+        #endregion
 
+        #region GAME LOOP BASE
         /// <summary>
         /// Run the Game
         /// </summary>
@@ -138,6 +150,22 @@ namespace Amethyst.Engine
             {
                 return;
             }
+
+            #region ASSETS LOADING
+            while (!(AssetsLoadingScene?.LoadingFinished ?? true))
+            {
+                AssetsLoadingScene.Update(0);
+
+                GL.Clear(ClearMask.GL_COLOR_BUFFER_BIT);
+                SpriteBatch.Begin(Program2D);
+                SceneManager.CurrentScene?.Render(SpriteBatch);
+                AssetsLoadingScene.Render(SpriteBatch);
+                SpriteBatch.End();
+                GLContext.SwapBuffers();
+            }
+            #endregion
+
+            OnStart();
 
             Logger.WriteLine("Entering the Game Loop");
             GameTime = new GameTime();
@@ -150,16 +178,10 @@ namespace Amethyst.Engine
             }
             Logger.WriteLine("Exiting the Game Loop");
         }
-        /// <summary>
-        /// Hook method called by Run(), just after exiting the Game loop<br />
-        /// Use it to release game resources
-        /// </summary>
-        protected virtual void OnRelease() { }
-
         private bool Init()
         {
             Logger.WriteLine(DisplaySettings.ToString());
-            
+
             #region INIT FORM
             Form = new Form();
             Form.ClientSize = new System.Drawing.Size(DisplaySettings.Width, DisplaySettings.Height);
@@ -308,7 +330,29 @@ namespace Amethyst.Engine
             OnResize();
             return Form.Created && OnInit();
         }
+        private void Update()
+        {
+            GameTime.Update();
+            SceneManager.CurrentScene?.Update(GameTime.ElapsedTime);
+            OnUpdate(GameTime.ElapsedTime);
+        }
+        private void Render()
+        {
+            GL.Clear(ClearMask.GL_COLOR_BUFFER_BIT);
+            SpriteBatch.Begin(Program2D);
+            SceneManager.CurrentScene?.Render(SpriteBatch);
+            OnRender(SpriteBatch);
+            SpriteBatch.End();
+            GLContext.SwapBuffers();
+        }
+        #endregion
 
+        #region HOOK Methods
+        /// <summary>
+        /// Hook method called by Run(), just after exiting the Game loop<br />
+        /// Use it to release game resources
+        /// </summary>
+        protected virtual void OnRelease() { }
         /// <summary>
         /// Method called when the Game window is resized.<br />
         /// Reset the viewport to the client area and recompute pre-computed 2D projection matrix.<br />
@@ -337,38 +381,26 @@ namespace Amethyst.Engine
             }
             #endregion
         }
-
         /// <summary>
         /// Hook method called by Run(), just before loading assets<br />
-        /// Use it to load game resources, or override some Amethyst presets features
+        /// Use it to override some Amethyst presets features, setup the Assets Loading Scene, ...
         /// </summary>
         /// <returns>Default return true. Return false only if something happened that makes the game unable to run</returns>
         protected virtual bool OnInit() { return true; }
-
-        private void Update()
-        {
-            GameTime.Update();
-            SceneManager.CurrentScene?.Update(GameTime.ElapsedTime);
-            OnUpdate(GameTime.ElapsedTime);
-        }
         /// <summary>
         /// Hook method called by Run(), during the Game loop<br />
         /// </summary>
         /// <param name="elapsedTime">Elapsed time since the last call to OnUpdate()</param>
         protected virtual void OnUpdate(float elapsedTime) { }
-
-        private void Render()
-        {
-            GL.Clear(ClearMask.GL_COLOR_BUFFER_BIT);
-            SpriteBatch.Begin(Program2D);
-            SceneManager.CurrentScene?.Render(SpriteBatch);
-            OnRender(SpriteBatch);
-            SpriteBatch.End();
-            GLContext.SwapBuffers();
-        }
         /// <summary>
         /// Hook method called by Run(), during the Game loop<br />
         /// </summary>
         protected virtual void OnRender(SpriteBatch spriteBatch) { }
+        /// <summary>
+        /// Hook method called by Run(), just before starting the game loop<br />
+        /// Use it to set the 1st Scene, ...
+        /// </summary>
+        protected virtual void OnStart() { }
+        #endregion
     }
 }

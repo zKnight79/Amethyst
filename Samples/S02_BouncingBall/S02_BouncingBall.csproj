@@ -38,6 +38,7 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BBAssetsLoadingScene.cs" />
     <Compile Include="BouncingBallGame.cs" />
     <Compile Include="BouncingBallScene.cs" />
     <Compile Include="MenuScene.cs" />

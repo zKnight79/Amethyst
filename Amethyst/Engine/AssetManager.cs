@@ -11,9 +11,18 @@ namespace Amethyst.Engine
     /// </summary>
     public sealed class AssetManager
     {
+        /// <summary>
+        /// Collection of Built-in fonts
+        /// </summary>
         public static class BuiltinFonts
         {
+            /// <summary>
+            /// Font "System", size 24
+            /// </summary>
             public const string SYSTEM_24 = "SYSTEM_24";
+            /// <summary>
+            /// Font "Arial Black", size 48
+            /// </summary>
             public const string ARIAL_BLACK_48 = "ARIAL_BLACK_48";
         }
         

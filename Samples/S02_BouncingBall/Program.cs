@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace S02_BouncingBall
+﻿namespace S02_BouncingBall
 {
     static class Program
     {

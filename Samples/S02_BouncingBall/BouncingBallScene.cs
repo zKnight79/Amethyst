@@ -2,12 +2,9 @@
 using Amethyst.Engine.Animators;
 using Amethyst.Engine.SceneNodes;
 using Amethyst.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Amethyst.Input;
 using Amethyst.Math;
+using System;
 
 namespace S02_BouncingBall
 {
