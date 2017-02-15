@@ -33,6 +33,16 @@ namespace Amethyst.Engine
         public void AddNode(SceneNode SceneNode)
         {
             m_SceneNodes.Add(SceneNode);
+            m_SceneNodes.Sort((sn1, sn2) =>
+            {
+                if (sn1?.ZOrder == sn2?.ZOrder)
+                {
+                    return 0;
+                } else
+                {
+                    return (sn1?.ZOrder > sn2?.ZOrder) ? 1 : -1;
+                }
+            });
         }
         /// <summary>
         /// Remove a Node from the Scene
