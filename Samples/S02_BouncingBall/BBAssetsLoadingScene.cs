@@ -8,7 +8,9 @@ namespace S02_BouncingBall
     {
         public override void OnUpdate(float elapsedTime)
         {
-            AssetManager.Instance.AddTexture(BouncingBallGame.TEXTURE_TOYBALL, new Texture(Textures.TOYBALL, TextureFiltering.Bilinear));
+            AssetManager am = AssetManager.Instance;
+            am.AddTexture(Textures.TOYBALL_TEX_NAME, new Texture(Textures.TOYBALL, TextureFiltering.Bilinear));
+            am.AddFont(Fonts.COMIC72_FONT_NAME, Font.FromXMLSrc(Fonts.ComicSansMS_Outline_72, new Texture(Fonts.ComicSansMS_Outline_72_TEX)));
 
             LoadingFinished = true;
         }

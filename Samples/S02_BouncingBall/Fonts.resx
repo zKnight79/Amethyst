@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="TOYBALL" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\toyball.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="COMIC72_FONT_NAME" xml:space="preserve">
+    <value>COMIC_OUTLINE_72</value>
   </data>
-  <data name="TOYBALL_TEX_NAME" xml:space="preserve">
-    <value>TOYBALL</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ComicSansMS_Outline_72" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\comicsansms_outline_72.fnt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="ComicSansMS_Outline_72_TEX" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\comicsansms_outline_72.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

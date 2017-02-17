@@ -22,7 +22,7 @@ namespace S02_BouncingBall
         {
             gameInstance = SceneManager.Game;
             
-            ballSprite = new Sprite(new Box(0, 0, 100, 100), AssetManager.Instance.GetTexture(BouncingBallGame.TEXTURE_TOYBALL));
+            ballSprite = new Sprite(new Box(0, 0, 100, 100), AssetManager.Instance.GetTexture(Textures.TOYBALL_TEX_NAME));
             AddNode(ballSprite);
 
             scoreLabel = new Label(gameInstance.ViewPort, "Score : 0", AssetManager.Instance.GetFont(AssetManager.BuiltinFonts.ARIAL_BLACK_48), gameInstance.BackgroundColor.Invert())

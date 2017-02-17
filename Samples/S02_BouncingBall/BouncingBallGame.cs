@@ -6,8 +6,6 @@ namespace S02_BouncingBall
 {
     class BouncingBallGame : Game
     {
-        public const string TEXTURE_TOYBALL = "TOYBALL";
-
         Font fpsFont;
 
         protected override bool OnInit()
