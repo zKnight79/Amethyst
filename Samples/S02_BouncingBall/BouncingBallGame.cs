@@ -20,7 +20,7 @@ namespace S02_BouncingBall
         protected override void OnStart()
         {
             BackgroundColor = Color4.Colors.SandyBrown;
-            fpsFont = AssetManager.Instance.GetFont(AssetManager.BuiltinFonts.SYSTEM_24);
+            fpsFont = AssetManager.BuiltinFonts.SYSTEM_24;
 
             Keyboard.KeyDown += (key, modifiers) =>
             {
@@ -30,7 +30,7 @@ namespace S02_BouncingBall
                 }
             };
 
-            SceneManager.PushScene(new BouncingBallScene());
+            SceneManager.PushScene(new MenuScene());
         }
 
         protected override void OnRender(SpriteBatch spriteBatch)

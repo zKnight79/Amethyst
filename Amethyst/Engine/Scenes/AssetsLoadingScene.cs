@@ -27,7 +27,7 @@ namespace Amethyst.Engine.Scenes
         /// <param name="spriteBatch">The SpriteBatch used to render the Scene</param>
         public override void Render(SpriteBatch spriteBatch)
         {
-            Font font = AssetManager.Instance.GetFont(AssetManager.BuiltinFonts.ARIAL_BLACK_48);
+            Font font = AssetManager.BuiltinFonts.ARIAL_BLACK_48;
             Box box = Game?.ViewPort ?? new Box(0, 0, 200, 200);
             Color4 color = Color4.Colors.White;
 
