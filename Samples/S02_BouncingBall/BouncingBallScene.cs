@@ -1,6 +1,7 @@
 ﻿using Amethyst.Engine;
 using Amethyst.Engine.Animators;
 using Amethyst.Engine.SceneNodes;
+using Amethyst.Engine.UINodes;
 using Amethyst.Graphics;
 using Amethyst.Input;
 using Amethyst.Math;
@@ -11,21 +12,25 @@ namespace S02_BouncingBall
     class BouncingBallScene : Scene
     {
         Game gameInstance;
-        Font scoreFont;
         Sprite ballSprite;
+        Label scoreLabel;
         MoveStraightAnimator ballAnimator;
         int ballClickCounter;
-        Color4 scoreColor;
         Random rnd = new Random();
 
         public override void OnLoad()
         {
             gameInstance = SceneManager.Game;
-            scoreFont = AssetManager.Instance.GetFont(AssetManager.BuiltinFonts.ARIAL_BLACK_48);
-            scoreColor = gameInstance.BackgroundColor.Invert();
-
+            
             ballSprite = new Sprite(new Box(0, 0, 100, 100), AssetManager.Instance.GetTexture(BouncingBallGame.TEXTURE_TOYBALL));
             AddNode(ballSprite);
+
+            scoreLabel = new Label(gameInstance.ViewPort, "Score : 0", AssetManager.Instance.GetFont(AssetManager.BuiltinFonts.ARIAL_BLACK_48), gameInstance.BackgroundColor.Invert())
+            {
+                TextAlign = TextAlign.Right,
+                TextRenderMode = TextRenderMode.Inline
+            };
+            AddUINode(scoreLabel);
         }
         public override void OnGetFocus()
         {
@@ -48,6 +53,7 @@ namespace S02_BouncingBall
             {
                 --ballClickCounter;
             }
+            scoreLabel.Text = string.Format("Score : {0}", ballClickCounter);
         }
 
         public override void OnUpdate(float elapsedTime)
@@ -69,17 +75,6 @@ namespace S02_BouncingBall
                 ballAnimator.SpeedY = -ballAnimator.SpeedY;
             }
             #endregion
-        }
-        public override void OnRender(SpriteBatch spriteBatch)
-        {
-            spriteBatch.DrawText(string.Format("Score : {0}", ballClickCounter),
-                scoreFont,
-                TextRenderMode.Inline,
-                gameInstance.ViewPort,
-                scoreColor,
-                TextAlign.Right
-            );
-
         }
     }
 }

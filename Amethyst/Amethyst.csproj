@@ -61,6 +61,7 @@
     <Compile Include="Engine\TextAlign.cs" />
     <Compile Include="Engine\TextRenderMode.cs" />
     <Compile Include="Engine\UINode.cs" />
+    <Compile Include="Engine\UINodes\Label.cs" />
     <Compile Include="Graphics\AntiAliasingLevel.cs" />
     <Compile Include="Graphics\BMFont\FontChar.cs" />
     <Compile Include="Graphics\BMFont\FontCommon.cs" />
@@ -137,9 +138,7 @@
       <LastGenOutput>Textures.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Engine\UINodes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

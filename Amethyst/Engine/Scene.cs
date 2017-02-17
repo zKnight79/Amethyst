@@ -13,8 +13,7 @@ namespace Amethyst.Engine
         /// </summary>
         public SceneManager SceneManager { get; internal set; }
 
-        List<SceneNode> m_SceneNodes = new List<SceneNode>();
-
+        private List<SceneNode> m_SceneNodes = new List<SceneNode>();
         /// <summary>
         /// Get the Scene's node count
         /// </summary>
@@ -29,10 +28,10 @@ namespace Amethyst.Engine
         /// <summary>
         /// Add a Node to the Scene
         /// </summary>
-        /// <param name="SceneNode">The Node to add</param>
-        public void AddNode(SceneNode SceneNode)
+        /// <param name="sceneNode">The Node to add</param>
+        public void AddNode(SceneNode sceneNode)
         {
-            m_SceneNodes.Add(SceneNode);
+            m_SceneNodes.Add(sceneNode);
             m_SceneNodes.Sort((sn1, sn2) =>
             {
                 if (sn1?.ZOrder == sn2?.ZOrder)
@@ -47,10 +46,50 @@ namespace Amethyst.Engine
         /// <summary>
         /// Remove a Node from the Scene
         /// </summary>
-        /// <param name="SceneNode">The Node to remove</param>
-        public void RemoveNode(SceneNode SceneNode)
+        /// <param name="sceneNode">The Node to remove</param>
+        public void RemoveNode(SceneNode sceneNode)
         {
-            m_SceneNodes.Remove(SceneNode);
+            m_SceneNodes.Remove(sceneNode);
+        }
+
+        private List<UINode> m_UINodes = new List<UINode>();
+        /// <summary>
+        /// Get the Scene's node count
+        /// </summary>
+        public int UINodeCount => m_UINodes.Count;
+        /// <summary>
+        /// Remove all UI nodes from the Scene
+        /// </summary>
+        public void ClearUINodes()
+        {
+            m_UINodes.Clear();
+        }
+        /// <summary>
+        /// Add an UI Node to the Scene
+        /// </summary>
+        /// <param name="uiNode">The UI Node to add</param>
+        public void AddUINode(UINode uiNode)
+        {
+            m_UINodes.Add(uiNode);
+            m_UINodes.Sort((sn1, sn2) =>
+            {
+                if (sn1?.ZOrder == sn2?.ZOrder)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return (sn1?.ZOrder > sn2?.ZOrder) ? 1 : -1;
+                }
+            });
+        }
+        /// <summary>
+        /// Remove an UI Node from the Scene
+        /// </summary>
+        /// <param name="uiNode">The UI Node to remove</param>
+        public void RemoveUINode(UINode uiNode)
+        {
+            m_UINodes.Remove(uiNode);
         }
 
         /// <summary>
@@ -59,9 +98,13 @@ namespace Amethyst.Engine
         /// <param name="spriteBatch">The SpriteBatch used to render the Nodes</param>
         public virtual void Render(SpriteBatch spriteBatch)
         {
-            foreach (SceneNode SceneNode in m_SceneNodes)
+            foreach (SceneNode sceneNode in m_SceneNodes)
             {
-                SceneNode.Render(spriteBatch);
+                sceneNode.Render(spriteBatch);
+            }
+            foreach (UINode uiNode in m_UINodes)
+            {
+                uiNode.Render(spriteBatch);
             }
             OnRender(spriteBatch);
         }
@@ -74,6 +117,10 @@ namespace Amethyst.Engine
             foreach (SceneNode SceneNode in m_SceneNodes)
             {
                 SceneNode.Update(elapsedTime);
+            }
+            foreach (UINode uiNode in m_UINodes)
+            {
+                uiNode.Update(elapsedTime);
             }
             OnUpdate(elapsedTime);
         }

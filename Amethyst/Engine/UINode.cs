@@ -4,21 +4,88 @@ using Amethyst.Math;
 
 namespace Amethyst.Engine
 {
+    /// <summary>
+    /// Base UI node class
+    /// </summary>
     public abstract class UINode : SceneNode
     {
+        /// <summary>
+        /// Get or set the Text displayed by the UI Node
+        /// </summary>
         public string Text { get; set; }
+        /// <summary>
+        /// Get or set the Font used to display the text
+        /// </summary>
         public Font Font { get; set; }
-        public Color4 TextColor { get; set; }
+
+        #region TEXT COLOR
+        private Color4 m_TextColor = Color4.Colors.White;
+        /// <summary>
+        /// Get or set the color of the text
+        /// </summary>
+        public Color4 TextColor
+        {
+            get { return m_TextColor; }
+            set { m_TextColor = value; }
+        }
+        /// <summary>
+        /// Get or set the Red component of the TextColor of the UI Node
+        /// </summary>
+        public float TextColorRed
+        {
+            get { return m_TextColor.Red; }
+            set { m_TextColor.Red = value; }
+        }
+        /// <summary>
+        /// Get or set the Green component of the TextColor of the UI Node
+        /// </summary>
+        public float TextColorGreen
+        {
+            get { return m_TextColor.Green; }
+            set { m_TextColor.Green = value; }
+        }
+        /// <summary>
+        /// Get or set the Blue component of the TextColor of the UI Node
+        /// </summary>
+        public float TextColorBlue
+        {
+            get { return m_TextColor.Blue; }
+            set { m_TextColor.Blue = value; }
+        }
+        /// <summary>
+        /// Get or set the Alpha component of the TextColor of the UI Node
+        /// </summary>
+        public float TextColorAlpha
+        {
+            get { return m_TextColor.Alpha; }
+            set { m_TextColor.Alpha = value; }
+        }
+        #endregion
+
+        /// <summary>
+        /// Get or set the Text render mode used to render the text
+        /// </summary>
         public TextRenderMode TextRenderMode { get; set; } = TextRenderMode.Box;
+        /// <summary>
+        /// Get or set the Text alignement used to render the text
+        /// </summary>
         public TextAlign TextAlign { get; set; } = TextAlign.MiddleCenter;
 
-        public UINode(Box box, string text, Font font, Color4 textColor) : base(box)
+        /// <summary>
+        /// Constructor for UINode. The Box and Font must be provided
+        /// </summary>
+        /// <param name="box">The Box of the UINode</param>
+        /// <param name="font">The Font of the UINode</param>
+        public UINode(Box box, Font font) : base(box)
         {
-            Text = text;
             Font = font;
-            TextColor = textColor;
         }
 
+        /// <summary>
+        /// The UINode implementation can define its render logic<br />
+        /// Default behavior is to render the Texture region of the texture in the Box, using Color and rotation angle
+        /// </summary>
+        /// <param name="spriteBatch">The SpriteBatch used to render the UINode</param>
         protected override void OnRender(SpriteBatch spriteBatch)
         {
             base.OnRender(spriteBatch);
@@ -27,76 +94,5 @@ namespace Amethyst.Engine
                 spriteBatch.DrawText(Text, Font, TextRenderMode, Box, TextColor, TextAlign, Angle);
             }
         }
-
-        /// <summary>
-        /// Hook method called when a Mouse button is pressed
-        /// </summary>
-        /// <param name="mouseState">The current mouse state</param>
-        public virtual void OnMouseButtonDown(MouseState mouseState) { }
-        /// <summary>
-        /// Hook method called when a Mouse button is released
-        /// </summary>
-        /// <param name="mouseState"></param>
-        public virtual void OnMouseButtonUp(MouseState mouseState) { }
-        /// <summary>
-        /// Hook method called when Mouse left button is clicked
-        /// </summary>
-        /// <param name="mouseState">The current mouse state</param>
-        public virtual void OnMouseLeftClick(MouseState mouseState) { }
-        /// <summary>
-        /// Hook method called when Mouse left button is double-clicked
-        /// </summary>
-        /// <param name="mouseState">The current mouse state</param>
-        public virtual void OnMouseLeftDoubleClick(MouseState mouseState) { }
-        /// <summary>
-        /// Hook method called when Mouse middle button is clicked
-        /// </summary>
-        /// <param name="mouseState">The current mouse state</param>
-        public virtual void OnMouseMiddleClick(MouseState mouseState) { }
-        /// <summary>
-        /// Hook method called when Mouse middle button is double-clicked
-        /// </summary>
-        /// <param name="mouseState">The current mouse state</param>
-        public virtual void OnMouseMiddleDoubleClick(MouseState mouseState) { }
-        /// <summary>
-        /// Hook method called when Mouse right button is clicked
-        /// </summary>
-        /// <param name="mouseState">The current mouse state</param>
-        public virtual void OnMouseRightClick(MouseState mouseState) { }
-        /// <summary>
-        /// Hook method called when Mouse right button is double-clicked
-        /// </summary>
-        /// <param name="mouseState">The current mouse state</param>
-        public virtual void OnMouseRightDoubleClick(MouseState mouseState) { }
-        /// <summary>
-        /// Hook method called when Mouse is moved
-        /// </summary>
-        /// <param name="mouseState">The current mouse state</param>
-        public virtual void OnMouseMove(MouseState mouseState) { }
-        /// <summary>
-        /// Hook method called when Mouse wheel is used
-        /// </summary>
-        /// <param name="mouseState">The current mouse state</param>
-        public virtual void OnMouseWheel(MouseState mouseState) { }
-        /// <summary>
-        /// Hook method called when Mouse XButton1 button is clicked
-        /// </summary>
-        /// <param name="mouseState">The current mouse state</param>
-        public virtual void OnMouseXButton1Click(MouseState mouseState) { }
-        /// <summary>
-        /// Hook method called when Mouse XButton1 button is double-clicked
-        /// </summary>
-        /// <param name="mouseState">The current mouse state</param>
-        public virtual void OnMouseXButton1DoubleClick(MouseState mouseState) { }
-        /// <summary>
-        /// Hook method called when Mouse XButton2 button is clicked
-        /// </summary>
-        /// <param name="mouseState">The current mouse state</param>
-        public virtual void OnMouseXButton2Click(MouseState mouseState) { }
-        /// <summary>
-        /// Hook method called when Mouse XButton2 button is double-clicked
-        /// </summary>
-        /// <param name="mouseState">The current mouse state</param>
-        public virtual void OnMouseXButton2DoubleClick(MouseState mouseState) { }
     }
 }

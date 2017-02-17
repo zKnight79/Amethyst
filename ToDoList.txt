@@ -1,8 +1,4 @@
 - Update Sample 02 => Adding a Menu
-  - Add UI Nodes
-    - Create UINode class
-	- Update Scene class
-	- Create Label class
   - Add a menu scene
 
 - Update Sample 02 => Music and Sound FX
